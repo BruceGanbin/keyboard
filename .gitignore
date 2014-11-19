@@ -1,0 +1,8 @@
+*.uvgui_Administrator.bak
+*.uvgui_Administrator
+*.uvgui.Administrator
+*.bak
+*.o
+*.obj
+*.OBJ
+/output
