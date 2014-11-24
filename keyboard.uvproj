@@ -30,7 +30,6 @@
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
           <SFDFile></SFDFile>
-          <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
@@ -44,14 +43,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\output\</OutputDirectory>
+          <OutputDirectory>.\</OutputDirectory>
           <OutputName>keyboard</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>1</CreateHexFile>
+          <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\output\</ListingPath>
+          <ListingPath>.\</ListingPath>
           <HexFormatSelection>0</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -72,8 +71,6 @@
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
-            <nStopB1X>0</nStopB1X>
-            <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
@@ -100,7 +97,6 @@
           <StopOnExitCode>3</StopOnExitCode>
           <CustomArgument></CustomArgument>
           <IncludeLibraryModules></IncludeLibraryModules>
-          <ComprImg>1</ComprImg>
           <BankNo>65535</BankNo>
         </CommonProperty>
         <DllOption>
@@ -122,7 +118,7 @@
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
           <Simulator>
-            <UseSimulator>0</UseSimulator>
+            <UseSimulator>1</UseSimulator>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -131,10 +127,9 @@
             <RestoreFunctions>1</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
-            <UseTarget>1</UseTarget>
+            <UseTarget>0</UseTarget>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>0</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -143,11 +138,9 @@
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-            <UsePdscDebugDescription>1</UsePdscDebugDescription>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>9</TargetSelection>
+          <TargetSelection>-1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -161,7 +154,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\SH51.DLL</Driver>
+            <Driver></Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -170,23 +163,19 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>0</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
-            <DriverSelection>4101</DriverSelection>
+            <Capability>0</Capability>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>0</bUseTDR>
-          <Flash2>BIN\SH51.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash2></Flash2>
+          <Flash3></Flash3>
           <Flash4></Flash4>
-          <pFcarmOut></pFcarmOut>
-          <pFcarmGrp></pFcarmGrp>
-          <pFcArmRoot></pFcArmRoot>
-          <FcArmLst>0</FcArmLst>
         </Utilities>
         <Target51>
           <Target51Misc>
             <MemoryModel>0</MemoryModel>
             <RTOS>0</RTOS>
-            <RomSize>1</RomSize>
+            <RomSize>2</RomSize>
             <DataHold>0</DataHold>
             <XDataHold>0</XDataHold>
             <UseOnchipRom>0</UseOnchipRom>
@@ -229,7 +218,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0xffff</Size>
+                <Size>0x0</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -310,7 +299,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\src</IncludePath>
+              <IncludePath></IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -363,54 +352,9 @@
           <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>Body.c</FileName>
+              <FileName>keyboard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\Body.c</FilePath>
-            </File>
-            <File>
-              <FileName>Descriptor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Descriptor.c</FilePath>
-            </File>
-            <File>
-              <FileName>Enumerate_data.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Enumerate_data.c</FilePath>
-            </File>
-            <File>
-              <FileName>HID_CLS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\HID_CLS.c</FilePath>
-            </File>
-            <File>
-              <FileName>Keyboard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Keyboard.c</FilePath>
-            </File>
-            <File>
-              <FileName>MAIN.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\MAIN.c</FilePath>
-            </File>
-            <File>
-              <FileName>STD.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\STD.c</FilePath>
-            </File>
-            <File>
-              <FileName>ToSuspend.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\ToSuspend.c</FilePath>
-            </File>
-            <File>
-              <FileName>Variable.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Variable.c</FilePath>
-            </File>
-            <File>
-              <FileName>Enable_BootLoder v1.4.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>.\src\Enable_BootLoder v1.4.lib</FilePath>
+              <FilePath>.\src\keyboard.c</FilePath>
             </File>
           </Files>
         </Group>
