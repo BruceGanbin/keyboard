@@ -1,7 +1,7 @@
 
 #include "keyboard.h"
 
-static unsigned char keynum_dat[3][8];
+static unsigned char keynum_dat[2][8];
 
 static void scan_out_high(void)
 {
@@ -13,8 +13,8 @@ static void keyscan(void)
     unsigned char i,j;
     unsigned char cycle_ctr=OxFE;
     unsigned int ret;
-    unsigned char keynum[3];
-    unsigned char temp[3];
+    unsigned char keynum[2];
+    unsigned char temp[2];
     
     scan_out_high();
     GPIO_COL = cycle_ctr;
@@ -22,21 +22,17 @@ static void keyscan(void)
     {
         temp[0] = GPIO_ROW1;
         temp[1] = GPIO_ROW2;
-        temp[2] = GPIO_ROW3;
         delay(20);
         keynum[0] = GPIO_ROW1;
         keynum[1] = GPIO_ROW2;
-        keynum[3] = GPIO_ROW3;
-        if(keynum[0]!=temp[0] || keynum[1]!=temp[1] || keynum[2]!=temp[2]) 
+        if(keynum[0]!=temp[0] || keynum[1]!=temp[1]) 
         {
             keynum_dat[0][i] = 0xFF;
             keynum_dat[1][i] = 0xFF;
-            keynum_dat[2][i] = 0xFF;
             continue;
         }
         keynum_dat[0][i] = keynum[0];
         keynum_dat[1][i] = keynum[1];
-        keynum_dat[3][i] = keynum[2];
         
         cycle_ctr = _crol_(cycle_ctr,1);
         GPIO_COL = cycle_ctr;
