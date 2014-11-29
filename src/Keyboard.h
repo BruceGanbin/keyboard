@@ -1,41 +1,41 @@
-#ifndef  __KEYBOARD_H
-#define  __KEYBOARD_H
+#ifndef  __KEY_BOARD_H
+#define  __KEY_BOARD_H
 
 #include <sh68F83.h>
 #include <intrins.h>
 
-sbit   R0 = P;
-sbit   R1 = P;    
-sbit   R2 = P;
-sbit   R3 = P;
-sbit   R4 = P;
-sbit   R5 = P;
-sbit   R6 = P;
-sbit   R7 = P;
+// sbit   R0 = P;
+// sbit   R1 = P;    
+// sbit   R2 = P;
+// sbit   R3 = P;
+// sbit   R4 = P;
+// sbit   R5 = P;
+// sbit   R6 = P;
+// sbit   R7 = P;
+//  
+// sbit   C0 = p;
+// sbit   C1 = p;
+// sbit   C2 = p;
+// sbit   C3 = p;
+// sbit   C4 = p;
+// sbit   C5 = p;
+// sbit   C6 = p;
+// sbit   C7 = p;
+// sbit   C8 = p;
+// sbit   C9 = p;
+// sbit   C10 = p;
+// sbit   C11 = p;
+// sbit   C12 = p;
+// sbit   C13 = p;
+// sbit   C14 = p;
+// sbit   C15 = p;
+// sbit   C16 = p;
 
-sbit   C0 = p;
-sbit   C1 = p;
-sbit   C2 = p;
-sbit   C3 = p;
-sbit   C4 = p;
-sbit   C5 = p;
-sbit   C6 = p;
-sbit   C7 = p;
-sbit   C8 = p;
-sbit   C9 = p;
-sbit   C10 = p;
-sbit   C11 = p;
-sbit   C12 = p;
-sbit   C13 = p;
-sbit   C14 = p;
-sbit   C15 = p;
-sbit   C16 = p;
-
-#defind GPIO_ALL_HIGH()    P0=0xFF;P1=0xFF;P2=0xFF
+#define GPIO_ALL_HIGH()    P0=0xFF;P1=0xFF;P2=0xFF
 #define GPIO_COL           P2
-#define GOPI_ROW1          P1
+#define GPIO_ROW1          P1
 #define GPIO_ROW2          P3
-#define GPIO_ROW3          P0&0x40
+//#define GPIO_ROW3          P0&0x40
 
 
 
@@ -250,17 +250,18 @@ sbit   C16 = p;
 //     {'64',0x00,0x00,'110','112','113','114','116','117','118','120','122','126',0x00,'75'}
 // };
 
-const unsigned char kyb_code[8][17]={
-    {0x00,0x00,0x00,KEY_Tab,KEY_Q,KEY_4,KEY_R,KEY_U,KEY_9,KEY_0,KEY_Underscore,KEY_EqualSign,KEY_TILDE,0x00,0x00},
-    {0x00,0x00,KEY_L_SHIFT,KEY_CAPSLOCK,KEY_W,KEY_E,KEY_T,KEY_6,KEY_I,KEY_O,KEY_P,KEY_L_Brackets,KEY_R_Brackets,0x00,KEY_Slash},
-    {FnKeyIndex,0x00,0x00,KEY_Z,KEY_A,KEY_D,KEY_F,KEY_J,KEY_K,KEY_L,KEY_Semicolon,KEY_Quotation,KEY_ENTER,0x00,KEY_R_CTRL},
-    {0x00,KEY_L_CTRL,0x00,0x00,KEY_S,KEY_C,KEY_V,KEY_N,KEY_M,KEY_COMMA,KEY_PERIOD,KEY_Interrogation,0x00,0x00,0x00},
-    {0x00,0x00,0x00,KEY_H,0x00,0x00,KEY_Y,KEY_B,0x00,0x00,KEY_LeftArrow,KEY_UpArrow,KEY_DownArrow,KEY_R_ALT,KEY_RightArrow},
-    {0x00,0x00,0x00,KEY_R_GUI,KEY_X,0x00,KEY_F4,KEY_G,0x00,0x00,KEY_SPACEBAR,0x00,0x00,KEY_L_ALT,KEY_Backspace},
-    {0x00,0x00,KEY_R_SHIFT,KEY_1,KEY_2,KEY_3,KEY_5,KEY_7,KEY_8,KEY_F8,KEY_F10,KEY_F12,'-',0x00,'/'},
-    {KEY_Delete,0x00,0x00,KEY_ESCAPE,KEY_F1,KEY_F2,KEY_F3,KEY_F5,KEY_F6,KEY_F7,KEY_F9,KEY_F11,'+',0x00,'*'}
-};
+// uonst unsigned char code kyb_code[8][17]={
+//     {0x00,0x00,0x00,KEY_Tab,KEY_Q,KEY_4,KEY_R,KEY_U,KEY_9,KEY_0,KEY_Underscore,KEY_EqualSign,KEY_TILDE,0x00,0x00},
+//     {0x00,0x00,KEY_L_SHIFT,KEY_CAPSLOCK,KEY_W,KEY_E,KEY_T,KEY_6,KEY_I,KEY_O,KEY_P,KEY_L_Brackets,KEY_R_Brackets,0x00,KEY_Slash},
+//     {FnKeyIndex,0x00,0x00,KEY_Z,KEY_A,KEY_D,KEY_F,KEY_J,KEY_K,KEY_L,KEY_Semicolon,KEY_Quotation,KEY_ENTER,0x00,KEY_R_CTRL},
+//     {0x00,KEY_L_CTRL,0x00,0x00,KEY_S,KEY_C,KEY_V,KEY_N,KEY_M,KEY_COMMA,KEY_PERIOD,KEY_Interrogation,0x00,0x00,0x00},
+//     {0x00,0x00,0x00,KEY_H,0x00,0x00,KEY_Y,KEY_B,0x00,0x00,KEY_LeftArrow,KEY_UpArrow,KEY_DownArrow,KEY_R_ALT,KEY_RightArrow},
+//     {0x00,0x00,0x00,KEY_R_GUI,KEY_X,0x00,KEY_F4,KEY_G,0x00,0x00,KEY_SPACEBAR,0x00,0x00,KEY_L_ALT,KEY_Backspace},
+//     {0x00,0x00,KEY_R_SHIFT,KEY_1,KEY_2,KEY_3,KEY_5,KEY_7,KEY_8,KEY_F8,KEY_F10,KEY_F12,'-',0x00,'/'},
+//     {KEY_Delete,0x00,0x00,KEY_ESCAPE,KEY_F1,KEY_F2,KEY_F3,KEY_F5,KEY_F6,KEY_F7,KEY_F9,KEY_F11,'+',0x00,'*'}
+//  };
 
 void readscan(void);
 
 #endif
+
