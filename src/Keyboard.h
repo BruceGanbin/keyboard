@@ -35,94 +35,83 @@
 #define GPIO_COL           P2
 #define GPIO_ROW1          P1
 #define GPIO_ROW2          P3
-//#define GPIO_ROW3          P0&0x40
 
 
+// keyboard scan code specificationsp
+#define   KEY_BUF_END          0x06 
+#define   FnKeyIndex           0xB0    
+                               
+#define   KEY_A                0x04
+#define   KEY_B                0x05
+#define   KEY_C                0x06
+#define   KEY_D                0x07
+#define   KEY_E                0x08
+#define   KEY_F                0x09
+#define   KEY_G                0x0a
+#define   KEY_H                0x0b
+#define   KEY_I                0x0c
+#define   KEY_J                0x0d
+#define   KEY_K                0x0e
+#define   KEY_L                0x0f
+#define   KEY_M                0x10
+#define   KEY_N                0x11
+#define   KEY_O                0x12
+#define   KEY_P                0x13
+#define   KEY_Q                0x14
+#define   KEY_R                0x15
+#define   KEY_S                0x16
+#define   KEY_T                0x17
+#define   KEY_U                0x18
+#define   KEY_V                0x19
+#define   KEY_W                0x1a
+#define   KEY_X                0x1b
+#define   KEY_Y                0x1c
+#define   KEY_Z                0x1d
+                               
+#define   KEY_1                0x1e
+#define   KEY_2                0x1f
+#define   KEY_3                0x20
+#define   KEY_4                0x21
+#define   KEY_5                0x22
+#define   KEY_6                0x23
+#define   KEY_7                0x24
+#define   KEY_8                0x25
+#define   KEY_9                0x26
+#define   KEY_0                0x27
+                               
+#define   KEY_ENTER            0x28
+#define   KEY_ESCAPE           0x29
+#define   KEY_Backspace        0x2a
+#define   KEY_Tab              0x2b
+#define   KEY_SPACEBAR         0x2c
+                               
+#define   KEY_Underscore       0x2d   //'_' xia hua xiann
+#define   KEY_EqualSign        0x2e   //'=' deng hao
+#define   KEY_L_Brackets       0x2f   //'[' zuo zhong kuo hao
+#define   KEY_R_Brackets       0x30   //']' you zhong kuo hao
+#define   KEY_Slash            0x31   //'\' xie gang
+#define   KEY_Semicolon        0x33   //';' fen hao
+#define   KEY_Quotation        0x34   //'"' yin hao
+#define   KEY_TILDE            0x35   //'~' bo lang
+#define   KEY_COMMA            0x36   //',' dou hao
+#define   KEY_PERIOD           0x37   //'.' ju hao
+#define   KEY_Interrogation    0x38   //'/' dun hao
+                               
+#define   KEY_CAPSLOCK         0x39   
+                               
+#define   KEY_F1               0x3a
+#define   KEY_F2               0x3b
+#define   KEY_F3               0x3c
+#define   KEY_F4               0x3d
+#define   KEY_F5               0x3e
+#define   KEY_F6               0x3f
+#define   KEY_F7               0x40
+#define   KEY_F8               0x41
+#define   KEY_F9               0x42
+#define   KEY_F10              0x43
+#define   KEY_F11              0x44
+#define   KEY_F12              0x45
 
-
-#define   KEY_BUF_END         0x06 
-#define   FnKeyIndex          0x61     
-                            
-#define   KEY_A               0x04
-#define   KEY_B               0x05
-#define   KEY_C               0x06
-#define   KEY_D               0x07
-#define   KEY_E               0x08
-#define   KEY_F               0x09
-#define   KEY_G               0x0a
-#define   KEY_H               0x0b
-#define   KEY_I               0x0c
-#define   KEY_J               0x0d
-#define   KEY_K               0x0e
-#define   KEY_L               0x0f
-#define   KEY_M               0x10
-#define   KEY_N               0x11
-#define   KEY_O               0x12
-#define   KEY_P               0x13
-#define   KEY_Q               0x14
-#define   KEY_R               0x15
-#define   KEY_S               0x16
-#define   KEY_T               0x17
-#define   KEY_U               0x18
-#define   KEY_V               0x19
-#define   KEY_W               0x1a
-#define   KEY_X               0x1b
-#define   KEY_Y               0x1c
-#define   KEY_Z               0x1d
-                            
-#define   KEY_ESCAPE          0x29       
-#define   KEY_Tab             0x2b
-#define   KEY_CAPSLOCK        0x39
-#define   KEY_Backspace       0x2a
-#define   KEY_ENTER           0x28
-#define   KEY_SPACEBAR        0x2c
-                            
-#define   KEY_L_CTRL          0x01//0xA0
-#define   KEY_L_SHIFT         0x02//0xA1
-#define   KEY_L_ALT           0x04//0xA2
-#define   KEY_L_GUI           0x08//0xA3
-#define   KEY_R_CTRL          0x10//0xA4
-#define   KEY_R_SHIFT         0x20//0xA5
-#define   KEY_R_ALT           0x40//0xA6
-#define   KEY_R_GUI           0x80//0xA7
-
-#define   KEY_TILDE           0x35   //bo lang
-#define   KEY_Underscore      0x2d   //xia hua xiann
-#define   KEY_EqualSign       0x2e   //deng hao
-#define   KEY_L_Brackets      0x2f   //zuo zhong kuo hao
-#define   KEY_R_Brackets      0x30   //you zhong kuo hao
-#define   KEY_Slash           0x31   //xie gang      //shu xian
-#define   KEY_Semicolon       0x33   //fen hao
-#define   KEY_Quotation       0x34   //yin hao
-#define   KEY_COMMA           0x36   //dou hao
-#define   KEY_PERIOD          0x37   //ju hao
-#define   KEY_Interrogation   0x38   //dun hao
-
-#define   KEY_1               0x1e
-#define   KEY_2               0x1f
-#define   KEY_3               0x20
-#define   KEY_4               0x21
-#define   KEY_5               0x22
-#define   KEY_6               0x23
-#define   KEY_7               0x24
-#define   KEY_8               0x25
-#define   KEY_9               0x26
-#define   KEY_0               0x27
-                              
-#define   KEY_F1              0x3a
-#define   KEY_F2              0x3b
-#define   KEY_F3              0x3c
-#define   KEY_F4              0x3d
-#define   KEY_F5              0x3e
-#define   KEY_F6              0x3f
-#define   KEY_F7              0x40
-#define   KEY_F8              0x41
-#define   KEY_F9              0x42
-#define   KEY_F10             0x43
-#define   KEY_F11             0x44
-#define   KEY_F12             0x45
-
-         
 #define   KEY_PrintScreen      0x46
 #define   KEY_ScrollLock       0x47
 #define   KEY_Pause            0x48
@@ -138,13 +127,13 @@
 #define   KEY_DownArrow        0x51
 #define   KEY_UpArrow          0x52
 
+// Number keyboard 
 #define   KEY_NUMLOCK          0x53
-#define   KEY_NUM_DIV          0x54
-#define   KEY_NUM_MUL          0x55
-#define   KEY_NUM_MINUS        0x56        
-#define   KEY_NUM_PLUS         0x57
+#define   KEY_NUM_DIV          0x54    // '/'
+#define   KEY_NUM_MUL          0x55    // '*'
+#define   KEY_NUM_MINUS        0x56    // '-'
+#define   KEY_NUM_PLUS         0x57    // '+'
 #define   KEY_NUM_ENTER        0x58
-#define   KEY_NUM_DOT          0x63
 
 #define   KEY_NUM_1            0x59
 #define   KEY_NUM_2            0x5a
@@ -156,7 +145,28 @@
 #define   KEY_NUM_8            0x60
 #define   KEY_NUM_9            0x61
 #define   KEY_NUM_0            0x62
-                             
+#define   KEY_NUM_DOT          0x63
+
+
+
+#define   KEY_L_CTRL           0xA0
+#define   KEY_L_SHIFT          0xA1
+#define   KEY_L_ALT            0xA2
+#define   KEY_L_GUI            0xA3
+#define   KEY_R_CTRL           0xA4
+#define   KEY_R_SHIFT          0xA5
+#define   KEY_R_ALT            0xA6
+#define   KEY_R_GUI            0xA7
+
+#define   KEY_L_CTRL_BIT           0x01  //bit0
+#define   KEY_L_SHIFT_BIT          0x02  //bit1
+#define   KEY_L_ALT_BIT            0x04  //bit2
+#define   KEY_L_GUI_BIT            0x08  //bit3
+#define   KEY_R_CTRL_BIT           0x10  //bit4
+#define   KEY_R_SHIFT_BIT          0x20  //bit5
+#define   KEY_R_ALT_BIT            0x40  //bit6
+#define   KEY_R_GUI_BIT            0x80  //bit7
+
 #define   KEY_CODE29           0x31
 #define   KEY_CODE42           0x32
 #define   KEY_CODE45           0x64
