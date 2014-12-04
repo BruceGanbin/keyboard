@@ -178,10 +178,10 @@ static void UsbEp2In(void)
 //
 void UsbHandler(void)
 {
-	SETBANK0;
+
 	RSET_WATCHDOG;
-	SETBANK1;
-	if(PUPIF){PUPIF = 0;UsbPulg();}
+
+
 	if(USBRSTIF){USBRSTIF = 0;UsbBusReset();}
 	if(SETUPIF){SETUPIF = 0;UsbSetup();}
     

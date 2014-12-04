@@ -13,7 +13,7 @@
 #define VPCON             0x01// USB pseudo plug-off
 
 void usbinit(void);
-
+void UsbHandler(void);
 
 #endif
 

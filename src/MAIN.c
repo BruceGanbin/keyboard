@@ -21,3 +21,9 @@ void main(void)
             usbkeydat[0] = 0xFF;
     }
 }
+
+
+void SIE_interrupt(void) interrupt 12  // or 13 ?
+{
+    UsbHandler();
+}
