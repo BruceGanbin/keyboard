@@ -68,15 +68,145 @@ U8 code ConfigurationDescriptor[9+9+9+7]=
     0x0A//bInterval
 };
 
-char Ep0ReceiveData[8];
-char Ep0SendData[8];
-char Ep1SendData[8];
-char Ep2SendData[8];
-unsigned char Ep0_rxcnt=0;
-unsigned char Ep0_txcnt=0;
-unsigned char Ep1_txcnt=0;
-unsigned char Ep2_txcnt=0;
+// char Ep0ReceiveData[8];
+// char Ep0SendData[8];
+// char Ep1SendData[8];
+// char Ep2SendData[8];
 
+u8 *pEp0SendData;
+u8 *pEp1SendData;
+u8 *pEp2SendData;
+u8 Ep0_rxcnt=0;
+u8 Ep0SendLen=0;
+u8 Ep1SendLen=0;
+u8 Ep2SendLen=0;
+
+/****************************************
+tx FIFO length is 8 bytes
+TX Operating Model:
+        set TxFULL = 0
+        Firmware Process
+      set TXDATx = TX data 
+     set TXCNTx = bytes count 
+         set TxFULL = 1
+****************************************/
+static void Ep0SendData(void)
+{
+    u8 T0_FULL;
+    u8 reg_flg;
+    
+    reg_flg = TXFLG0 ;
+    T0_FULL = reg_flg & 0x01;
+    if(!T0_FULL)
+    {
+        if(Ep0SendLen > DeviceDescriptor[7])
+        {
+            // send data
+            TXDAT0 = pEp0SendData;
+            TXCNT0 = DeviceDescriptor[7];
+            TXFLG0 = reg_flg | 0x01;  // set Full = 1;
+                
+            Ep0SendLen -= DeviceDescriptor[7];
+            pEp0SendData += DeviceDescriptor[7];
+        }
+        else
+        {
+            if(Ep0SendLen != 0)
+            {
+                // send data
+                TXDAT0 = pEp0SendData;
+                TXCNT0 = Ep0SendLen;
+                TXFLG0 = reg_flg | 0x01;  // set Full = 1;
+
+                Ep0SendLen = 0;
+            }
+            else
+            {
+                TXCNT0 = 0;
+                TXFLG0 = reg_flg | 0x01;  // set Full = 1;
+            }
+        }
+    }
+}
+
+
+static void Ep1SendData(void)
+{
+    u8 T1_FULL;
+    u8 reg_flg;
+    
+    reg_flg = TXFLG1;
+    T1_FULL = reg_flg & 0x01;
+    if(!T1_FULL)
+    {
+        if(Ep1SendLen > DeviceDescriptor[7])
+        {
+            // send data
+            TXDAT1 = pEp1SendData;
+            TXCNT1 = DeviceDescriptor[7];
+            TXFLG1 = reg_flg | 0x01;  // set Full = 1;
+                
+            Ep1SendLen -= DeviceDescriptor[7];
+            pEp1SendData += DeviceDescriptor[7];
+        }
+        else
+        {
+            if(Ep1SendLen != 0)
+            {
+                // send data
+                TXDAT1 = pEp1SendData;
+				TXCNT1 = Ep1SendLen;
+				TXFLG1 = reg_flg | 0x01;  // set Full = 1;
+
+                Ep1SendLen = 0;
+            }
+            else
+            {
+                TXCNT1 = 0;
+				TXFLG1 = reg_flg | 0x01;  // set Full = 1;
+            }
+        }
+    }
+}
+
+static void Ep2SendData(void)
+{
+    u8 T2_FULL;
+    u8 reg_flg;
+    
+    reg_flg = TXFLG2;
+    T2_FULL = reg_flg & 0x01;
+    if(!T2_FULL)
+    {
+        if(Ep2SendLen > DeviceDescriptor[7])
+        {
+            // send data
+            TXDAT2 = pEp2SendData;
+			TXCNT2 = DeviceDescriptor[7];
+			TXFLG2 = reg_flg | 0x01;  // set Full = 1;
+                
+            Ep2SendLen -= DeviceDescriptor[7];
+            pEp2SendData += DeviceDescriptor[7];
+        }
+        else
+        {
+            if(Ep2SendLen != 0)
+            {
+                // send data
+                TXDAT2 = pEp2SendData;
+				TXCNT2 = Ep2SendLen;
+				TXFLG2 = reg_flg | 0x01;  // set Full = 1;
+
+                Ep2SendLen = 0;
+            }
+            else
+            {
+                TXCNT2 = 0;
+				TXFLG2 = reg_flg | 0x01;  // set Full = 1;
+            }
+        }
+    }
+}
 
 static void UsbEp0ReceiveData(void)
 {
@@ -96,52 +226,25 @@ static void UsbEp0ReceiveData(void)
     }
 }
 
-static void UsbEp0SendData(void)
+static void UsbEp0SendData(u8 *pSendData,u8 len)
 {
-    u8 T0_FULL;
-    u8 reg_flg;
-    u8 i = 0;
-    reg_flg = TXFLG0 ;
-    T0_FULL = reg_flg & 0x01;
-    if(!T0_FULL)
-    {
-
-        TXDAT0 = Ep0SendData;
-        TXCNT0 = Ep0_rxcnt;
-        TXFLG0 = reg_flg | 0x01;  // set Full = 1;
-    }
+    pEp0SendData = pSendData;
+    Ep0SendLen = len;
+    Ep0SendData();
 }
 
-static void UsbEp0SendData(void)
+static void UsbEp1SendData(u8 *pSendData,u8 len)
 {
-    u8 T1_FULL;
-    u8 reg_flg;
-    u8 i = 0;
-    reg_flg = TXFLG1;
-    T1_FULL = reg_flg & 0x01;
-    if(!T1_FULL)
-    {
-
-        TXDAT1 = Ep1SendData;
-        TXCNT1 = Ep1_rxcnt;
-        TXFLG1 = reg_flg | 0x01;  // set Full = 1;
-    }
+    pEp1SendData = pSendData;
+    Ep1SendLen = len;
+    Ep1SendData();
 }
 
-static void UsbEp0SendData(void)
+static void UsbEp2SendData(u8 *pSendData,u8 len)
 {
-    u8 T2_FULL;
-    u8 reg_flg;
-    u8 i = 0;
-    reg_flg = TXFLG2;
-    T2_FULL = reg_flg & 0x01;
-    if(!T2_FULL)
-    {
-
-        TXDAT2 = Ep2SendData;
-		TXCNT2 = Ep2_rxcnt;
-		TXFLG2 = reg_flg | 0x01;  // set Full = 1;
-    }
+    pEp2SendData = pSendData;
+    Ep2SendLen = len;
+    Ep2SendData();
 }
 
 //  
@@ -152,27 +255,17 @@ static void UsbEp0Out(void)
 
 static void UsbEp0In(void)
 {
-	UsbEp0SendData();	
-}
-
-static void UsbEp1Out(void)
-{
-	
+    Ep0SendData();
 }
 
 static void UsbEp1In(void)
 {
-
-}
-
-static void UsbEp2Out(void)
-{
-
+	Ep1SendData();
 }
 
 static void UsbEp2In(void)
 {
-
+	Ep2SendData();
 }
 
 //
@@ -187,11 +280,11 @@ void UsbHandler(void)
     
 	if(IEP0IF){IEP0IF = 0;UsbEp0In();}
 	if(OEP0IF){OEP0IF = 0;UsbEp0Out();}
-    //	if(IEP1IF){IEP1IF = 0;UsbEp1In();}
-	if(OEP1IF){OEP1IF = 0;UsbEp1Out();}
-    //	if(IEP2IF){IEP2IF = 0;UsbEp2In();}
-	if(OEP2IF){OEP2IF = 0;UsbEp2Out();}
-	if(SUSPIF){SUSPIF = 0;UsbBusSuspend();}
+   	if(IEP1IF){IEP1IF = 0;UsbEp1In();}
+    //	if(OEP1IF){OEP1IF = 0;UsbEp1Out();}
+    if(IEP2IF){IEP2IF = 0;UsbEp2In();}
+    //	if(OEP2IF){OEP2IF = 0;UsbEp2Out();}
+    //	if(SUSPIF){SUSPIF = 0;UsbBusSuspend();}
 }
 
 void usbinit(void)

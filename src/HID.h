@@ -12,6 +12,8 @@
 #define ERW_UP            0x02// Enable remote wake-up
 #define VPCON             0x01// USB pseudo plug-off
 
+#define USB_BUF_LEN          8
+
 void usbinit(void);
 void UsbHandler(void);
 
