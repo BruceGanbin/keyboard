@@ -2,6 +2,22 @@
 #include "c51type.h"
 #include <intrins.h>
 
+u8	bmRequestType;
+u8	bRequest;
+u16 wValue;
+u16 wIndex;
+u16 wLength;
+
+u8 *pEp0ReadData;
+u8 *pEp0SendData;
+u8 *pEp1SendData;
+u8 *pEp2SendData;
+u8 Ep0_rxcnt=0;
+u8 Ep0SendLen=0;
+u8 Ep1SendLen=0;
+u8 Ep2SendLen=0;
+u8 Ep0ReadData[EP0_RD_LEN];
+
 u8 code DeviceDescriptor[0x12]=  
 {
     0x12,//bLength
@@ -73,13 +89,7 @@ U8 code ConfigurationDescriptor[9+9+9+7]=
 // char Ep1SendData[8];
 // char Ep2SendData[8];
 
-u8 *pEp0SendData;
-u8 *pEp1SendData;
-u8 *pEp2SendData;
-u8 Ep0_rxcnt=0;
-u8 Ep0SendLen=0;
-u8 Ep1SendLen=0;
-u8 Ep2SendLen=0;
+
 
 /****************************************
 tx FIFO length is 8 bytes
@@ -215,13 +225,16 @@ static void UsbEp0ReceiveData(void)
     u8 i = 0;
     reg_flg = RXFLG0 ;
     T0_FULL = reg_flg & 0x01;
-    Ep0_rxcnt = RXCNT0;
     if(T0_FULL)
     {
-        for(i=0;i<Ep0_rxcnt;i++)
+        Ep0_rxcnt = RXCNT0;
+
+        pEp0ReadData += Ep0_rxcnt;
+        if((pEp0ReadData - Ep0ReadData) > EP0_RD_LEN)
         {
-            Ep0ReceiveData[i] = RXDAT0;
+            pEp0ReadData = Ep0ReadData;
         }
+        RXDAT0 = pEp0ReadData;
         TXFLG0 = reg_flg & 0xFE;  // set Full = 0; Read data
     }
 }
@@ -248,47 +261,78 @@ static void UsbEp2SendData(u8 *pSendData,u8 len)
 }
 
 //  
-static void UsbEp0Out(void)
+void UsbEp0Out(void)
 {
-	OEP0RDY = 1;
+    UsbEp0ReceiveData();
 }
 
-static void UsbEp0In(void)
+void UsbEp0In(void)
 {
     Ep0SendData();
 }
 
-static void UsbEp1In(void)
+void UsbEp1In(void)
 {
 	Ep1SendData();
 }
 
-static void UsbEp2In(void)
+void UsbEp2In(void)
 {
 	Ep2SendData();
+}
+
+void UsbSetup(void)
+{
+	bmRequestType = Ep0ReadData[0];
+	bRequest = Ep0ReadData[1];
+	wValue = Ep0ReadData[2] + (((u16)Ep0ReadData[3])<<8);
+	wIndex = Ep0ReadData[4] + (((u16)Ep0ReadData[5])<<8);
+	wLength = Ep0ReadData[6] + (((u16)Ep0ReadData[7])<<8);
+
+    if((bmRequestType & 0x80) == 0x80)
+    {
+        
+    }
+    else
+    {
+
+    }
+        
+    // reset Ep0 Rx FIFO point 
+    pEp0ReadData = Ep0ReadData;
+    RXDAT0 = pEp0ReadData;
 }
 
 //
 void UsbHandler(void)
 {
+    u8 usb_token;
 
-	RSET_WATCHDOG;
-
-
+    usb_token = IRQFG;
 	if(USBRSTIF){USBRSTIF = 0;UsbBusReset();}
-	if(SETUPIF){SETUPIF = 0;UsbSetup();}
+    //	if(SETUPIF){SETUPIF = 0;UsbSetup();}
     
-	if(IEP0IF){IEP0IF = 0;UsbEp0In();}
-	if(OEP0IF){OEP0IF = 0;UsbEp0Out();}
-   	if(IEP1IF){IEP1IF = 0;UsbEp1In();}
-    //	if(OEP1IF){OEP1IF = 0;UsbEp1Out();}
-    if(IEP2IF){IEP2IF = 0;UsbEp2In();}
-    //	if(OEP2IF){OEP2IF = 0;UsbEp2Out();}
+   	if(usb_token & IRQF_IN1)
+    {
+        UsbEp1In();
+        usb_token &= (~IRQF_IN1);
+        IRQFG = usb_token;
+    }
+    if(usb_token & IRQF_IN2)
+    {
+        UsbEp2In();
+        usb_token &= (~IRQF_IN2);
+        IRQFG = usb_token;
+    }
     //	if(SUSPIF){SUSPIF = 0;UsbBusSuspend();}
 }
 
 void usbinit(void)
 {
     DFC = PULL_UP | USB_CON | USB_EN | VPCON | FW_K ;
+    IE2 = IE_EIN0 | IE_EOUT0 | IE_ESIE ;
+    IRQEN = IRQE_EIN1 | IRQE_EIN2 ;
 }
+
+
 
