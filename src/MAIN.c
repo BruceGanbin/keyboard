@@ -1,6 +1,6 @@
 #include <sh68f83.h>
 #include "keyboard.h"
-#include "HID.h"
+#include "usbcore.h"
 
 unsigned char usbkeydat[8];
 unsigned char temp=0;

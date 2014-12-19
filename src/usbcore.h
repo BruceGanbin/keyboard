@@ -1,5 +1,5 @@
-#ifndef __HID_H
-#define __HID_H
+#ifndef __USBCORE_H
+#define __USBCORE_H
 #include <sh68F83.h>
 
 
@@ -59,6 +59,12 @@
 #define GET_INTERFACE          10
 #define SET_INTERFACE          11
 #define SYNCH_FRAME            12
+
+#define DEVICE_DESCRIPTOR         1
+#define CONFIGURATION_DESCRIPTOR  2
+#define STRING_DESCRIPTOR         3
+#define INTERFACE_DESCRIPTOR      4
+#define ENDPOINT_DESCRIPTOR       5
 
 #define USB_BUF_LEN            8
 #define EP0_RD_LEN             18

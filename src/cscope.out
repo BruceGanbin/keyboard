@@ -1,0 +1,4647 @@
+cscope 15 $HOME/Documents/play/keyboard/source/src               0000023924
+	@51_iic.c
+
+1 
+	~"51_iic.h
+"
+
+3 
+sbô
+ 
+	giic_˛k
+ = 
+P2
+^1;
+
+4 
+sbô
+ 
+	giic_d©
+ = 
+P2
+^2;
+
+7 
+	$iic_ack
+()
+
+10 
+	}
+}
+
+12 
+	$iic_£nd
+(
+u8
+ *
+d©a
+,u8 
+addr
+,u8 
+Àn
+)
+
+15 
+	}
+}
+
+17 
+	$iic_ªad
+(
+u8
+ *
+d©a
+,u8 
+addr
+,u8 
+Àn
+)
+
+20 
+	}
+}
+
+	@51_iic.h
+
+1 #i‚de‡
+__51_IIC_H
+
+
+2 
+	#__51_IIC_H
+
+
+	)
+
+3 
+	~<sh68F83.h
+>
+
+4 
+	~<öåös.h
+>
+
+7 
+iic_£nd
+(
+u8
+ *
+d©a
+,u8 
+addr
+,u8 
+Àn
+);
+
+8 
+iic_ªad
+(
+u8
+ *
+d©a
+,u8 
+addr
+,u8 
+Àn
+);
+
+	@Keyboard.c
+
+1 
+	~"keybﬂrd.h
+"
+
+3 
+code
+ 
+	gkyb_m≠
+[8][17]={
+
+4 {0x00,0x00,0x00,
+KEY_Tab
+,
+KEY_Q
+,
+KEY_4
+,
+KEY_R
+,
+KEY_U
+,
+KEY_9
+,
+KEY_0
+,
+KEY_Undîsc‹e
+,
+KEY_EquÆSign
+,
+KEY_TILDE
+,0x00,0x00},
+
+5 {0x00,0x00,
+KEY_L_SHIFT
+,
+KEY_CAPSLOCK
+,
+KEY_W
+,
+KEY_E
+,
+KEY_T
+,
+KEY_6
+,
+KEY_I
+,
+KEY_O
+,
+KEY_P
+,
+KEY_L_Bøckës
+,
+KEY_R_Bøckës
+,0x00,
+KEY_Sœsh
+},
+
+6 {
+FnKeyIndex
+,0x00,0x00,
+KEY_Z
+,
+KEY_A
+,
+KEY_D
+,
+KEY_F
+,
+KEY_J
+,
+KEY_K
+,
+KEY_L
+,
+KEY_Semicﬁ⁄
+,
+KEY_QuŸ©i⁄
+,
+KEY_ENTER
+,0x00,
+KEY_R_CTRL
+},
+
+7 {0x00,
+KEY_L_CTRL
+,0x00,0x00,
+KEY_S
+,
+KEY_C
+,
+KEY_V
+,
+KEY_N
+,
+KEY_M
+,
+KEY_COMMA
+,
+KEY_PERIOD
+,
+KEY_I¡îrog©i⁄
+,0x00,0x00,0x00},
+
+8 {0x00,0x00,0x00,
+KEY_H
+,0x00,0x00,
+KEY_Y
+,
+KEY_B
+,0x00,0x00,
+KEY_Le·Aºow
+,
+KEY_UpAºow
+,
+KEY_DownAºow
+,
+KEY_R_ALT
+,
+KEY_RightAºow
+},
+
+9 {0x00,0x00,0x00,
+KEY_R_GUI
+,
+KEY_X
+,0x00,
+KEY_F4
+,
+KEY_G
+,0x00,0x00,
+KEY_SPACEBAR
+,0x00,0x00,
+KEY_L_ALT
+,
+KEY_Back•a˚
+},
+
+10 {0x00,0x00,
+KEY_R_SHIFT
+,
+KEY_1
+,
+KEY_2
+,
+KEY_3
+,
+KEY_5
+,
+KEY_7
+,
+KEY_8
+,
+KEY_F8
+,
+KEY_F10
+,
+KEY_F12
+,'-',0x00,'/'},
+
+11 {
+KEY_Dñëe
+,0x00,0x00,
+KEY_ESCAPE
+,
+KEY_F1
+,
+KEY_F2
+,
+KEY_F3
+,
+KEY_F5
+,
+KEY_F6
+,
+KEY_F7
+,
+KEY_F9
+,
+KEY_F11
+,'+',0x00,'*'}
+
+14 
+	gFn_m≠
+[12]={};
+
+16 
+	gkeynum_d©
+[8];
+
+18 
+	$dñay
+(
+cou¡
+)
+
+20 
+i
+;
+
+21 
+cou¡
+--)
+
+23 
+i
+=0;i<100;i++);
+
+25 
+	}
+}
+
+28 
+	$sˇn_out_high
+()
+
+30 
+	`GPIO_ALL_HIGH
+();
+
+31 
+	}
+}
+
+33 
+	$keysˇn
+()
+
+35 
+i
+;
+
+36 
+cy˛e_˘r
+ = 0xFE;
+
+37 
+keynum
+[2];
+
+38 
+ãmp
+[2];
+
+41 
+GPIO_COL
+ = 
+cy˛e_˘r
+;
+
+42 
+i
+=0;i<8;i++)
+
+44 
+	`sˇn_out_high
+();
+
+45 
+ãmp
+[0] = 
+GPIO_ROW1
+;
+
+46 
+ãmp
+[1] = 
+GPIO_ROW2
+;
+
+47 
+	`dñay
+(20);
+
+48 
+	`sˇn_out_high
+();
+
+49 
+keynum
+[0] = 
+GPIO_ROW1
+;
+
+50 
+keynum
+[1] = 
+GPIO_ROW2
+;
+
+51 if(
+keynum
+[0]!=
+ãmp
+[0] || keynum[1]!=temp[1])
+
+53 
+keynum_d©
+[
+i
+] = 0xFF;
+
+59 
+keynum_d©
+[
+i
+] = (
+keynum
+[0]<<8) | keynum[1];
+
+61 
+cy˛e_˘r
+ = 
+	`_¸ﬁ_
+(cycle_ctr,1);
+
+62 
+GPIO_COL
+ = 
+cy˛e_˘r
+;
+
+65 
+	}
+}
+
+67 
+usbkeyd©
+[8];
+
+68 
+	$ªadsˇn
+()
+
+71 
+i
+,
+k
+;
+
+72 
+usb_c
+ = 0;
+
+73 
+¥ess_cou¡
+ = 2;
+
+74 
+key_vÆue
+ = 0;
+
+75 
+cúcbô
+ = 0;
+
+76 
+keybô
+ = 0;
+
+77 
+Fn_°
+ = 0;
+
+79 
+i
+=0;i<8;i++)
+
+80 {
+usbkeyd©
+[
+i
+] = 0;}
+
+82 
+	`keysˇn
+();
+
+84 
+i
+=0;i<8;i++)
+
+87 if(
+keynum_d©
+[
+i
+] == 0xFFFF)
+
+91 
+cúcbô
+ = 0x8000;
+
+92 
+k
+=0;k<16;k++)
+
+94 
+keybô
+ = 
+keynum_d©
+[
+i
+] & 
+cúcbô
+;
+
+95 
+cúcbô
+ = 
+	`_ú‹_
+(circbit,1);
+
+97 if(
+keybô
+ != 0 )
+
+100 
+key_vÆue
+ = 
+kyb_m≠
+[
+i
+][
+k
+];
+
+102 
+key_vÆue
+)
+
+104 
+KEY_L_CTRL
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_L_CTRL_BIT
+;
+
+106 
+KEY_L_SHIFT
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_L_SHIFT_BIT
+;
+
+108 
+KEY_L_ALT
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_L_ALT_BIT
+;
+
+110 
+KEY_L_GUI
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_L_GUI_BIT
+;
+
+112 
+KEY_R_CTRL
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_R_CTRL_BIT
+;
+
+114 
+KEY_R_SHIFT
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_R_SHIFT_BIT
+;
+
+116 
+KEY_R_ALT
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_R_ALT_BIT
+;
+
+118 
+KEY_R_GUI
+: 
+usbkeyd©
+[0] = usbkeyd©[0] | 
+KEY_R_GUI_BIT
+;
+
+121 
+usbkeyd©
+[
+¥ess_cou¡
+] = 
+key_vÆue
+;
+
+125 if(
+key_vÆue
+ =
+FnKeyIndex
+Ë
+Fn_°
+ = 1;
+
+126 
+¥ess_cou¡
+++;
+
+128 if(
+¥ess_cou¡
+ > 7)
+
+130 
+k
+=0;k<8;k++)
+
+131 {
+usbkeyd©
+[
+i
+] = 0;}
+
+138 if(
+Fn_°
+)
+
+140 
+i
+=2;i<8;i++)
+
+142 if(
+usbkeyd©
+[
+i
+] >= 0x3a && usbkeydat[i] <= 0x45)
+
+144 
+usbkeyd©
+[
+i
+] = 
+Fn_m≠
+[i-2];
+
+149 
+	}
+}
+
+	@Keyboard.h
+
+1 #i‚de‡ 
+__KEY_BOARD_H
+
+
+2 
+	#__KEY_BOARD_H
+
+
+	)
+
+4 
+	~<sh68F83.h
+>
+
+5 
+	~<öåös.h
+>
+
+34 
+	#GPIO_ALL_HIGH
+(Ë
+P0
+=0xFF;
+P1
+=0xFF;
+P2
+=0xFF
+
+	)
+
+35 
+	#GPIO_COL
+ 
+P2
+
+
+	)
+
+36 
+	#GPIO_ROW1
+ 
+P1
+
+
+	)
+
+37 
+	#GPIO_ROW2
+ 
+P3
+
+
+	)
+
+41 
+	#KEY_BUF_END
+ 0x06
+
+	)
+
+42 
+	#FnKeyIndex
+ 0xB0
+
+	)
+
+44 
+	#KEY_A
+ 0x04
+
+	)
+
+45 
+	#KEY_B
+ 0x05
+
+	)
+
+46 
+	#KEY_C
+ 0x06
+
+	)
+
+47 
+	#KEY_D
+ 0x07
+
+	)
+
+48 
+	#KEY_E
+ 0x08
+
+	)
+
+49 
+	#KEY_F
+ 0x09
+
+	)
+
+50 
+	#KEY_G
+ 0x0a
+
+	)
+
+51 
+	#KEY_H
+ 0x0b
+
+	)
+
+52 
+	#KEY_I
+ 0x0c
+
+	)
+
+53 
+	#KEY_J
+ 0x0d
+
+	)
+
+54 
+	#KEY_K
+ 0x0e
+
+	)
+
+55 
+	#KEY_L
+ 0x0f
+
+	)
+
+56 
+	#KEY_M
+ 0x10
+
+	)
+
+57 
+	#KEY_N
+ 0x11
+
+	)
+
+58 
+	#KEY_O
+ 0x12
+
+	)
+
+59 
+	#KEY_P
+ 0x13
+
+	)
+
+60 
+	#KEY_Q
+ 0x14
+
+	)
+
+61 
+	#KEY_R
+ 0x15
+
+	)
+
+62 
+	#KEY_S
+ 0x16
+
+	)
+
+63 
+	#KEY_T
+ 0x17
+
+	)
+
+64 
+	#KEY_U
+ 0x18
+
+	)
+
+65 
+	#KEY_V
+ 0x19
+
+	)
+
+66 
+	#KEY_W
+ 0x1a
+
+	)
+
+67 
+	#KEY_X
+ 0x1b
+
+	)
+
+68 
+	#KEY_Y
+ 0x1c
+
+	)
+
+69 
+	#KEY_Z
+ 0x1d
+
+	)
+
+71 
+	#KEY_1
+ 0x1e
+
+	)
+
+72 
+	#KEY_2
+ 0x1f
+
+	)
+
+73 
+	#KEY_3
+ 0x20
+
+	)
+
+74 
+	#KEY_4
+ 0x21
+
+	)
+
+75 
+	#KEY_5
+ 0x22
+
+	)
+
+76 
+	#KEY_6
+ 0x23
+
+	)
+
+77 
+	#KEY_7
+ 0x24
+
+	)
+
+78 
+	#KEY_8
+ 0x25
+
+	)
+
+79 
+	#KEY_9
+ 0x26
+
+	)
+
+80 
+	#KEY_0
+ 0x27
+
+	)
+
+82 
+	#KEY_ENTER
+ 0x28
+
+	)
+
+83 
+	#KEY_ESCAPE
+ 0x29
+
+	)
+
+84 
+	#KEY_Back•a˚
+ 0x2a
+
+	)
+
+85 
+	#KEY_Tab
+ 0x2b
+
+	)
+
+86 
+	#KEY_SPACEBAR
+ 0x2c
+
+	)
+
+88 
+	#KEY_Undîsc‹e
+ 0x2d
+
+89 
+	#KEY_EquÆSign
+ 0x2e
+
+90 
+	#KEY_L_Bøckës
+ 0x2f
+
+91 
+	#KEY_R_Bøckës
+ 0x30
+
+92 
+	#KEY_Sœsh
+ 0x31
+
+93 
+	#KEY_Semicﬁ⁄
+ 0x33
+
+94 
+	#KEY_QuŸ©i⁄
+ 0x34
+
+95 
+	#KEY_TILDE
+ 0x35
+
+96 
+	#KEY_COMMA
+ 0x36
+
+97 
+	#KEY_PERIOD
+ 0x37
+
+98 
+	#KEY_I¡îrog©i⁄
+ 0x38
+
+99 
+
+	)
+
+100 
+	#KEY_CAPSLOCK
+ 0x39
+
+	)
+
+102 
+	#KEY_F1
+ 0x3a
+
+	)
+
+103 
+	#KEY_F2
+ 0x3b
+
+	)
+
+104 
+	#KEY_F3
+ 0x3c
+
+	)
+
+105 
+	#KEY_F4
+ 0x3d
+
+	)
+
+106 
+	#KEY_F5
+ 0x3e
+
+	)
+
+107 
+	#KEY_F6
+ 0x3f
+
+	)
+
+108 
+	#KEY_F7
+ 0x40
+
+	)
+
+109 
+	#KEY_F8
+ 0x41
+
+	)
+
+110 
+	#KEY_F9
+ 0x42
+
+	)
+
+111 
+	#KEY_F10
+ 0x43
+
+	)
+
+112 
+	#KEY_F11
+ 0x44
+
+	)
+
+113 
+	#KEY_F12
+ 0x45
+
+	)
+
+115 
+	#KEY_PrötS¸ìn
+ 0x46
+
+	)
+
+116 
+	#KEY_S¸ﬁlLock
+ 0x47
+
+	)
+
+117 
+	#KEY_Pau£
+ 0x48
+
+	)
+
+118 
+	#KEY_In£π
+ 0x49
+
+	)
+
+119 
+	#KEY_Home
+ 0x4a
+
+	)
+
+120 
+	#KEY_PageUp
+ 0x4b
+
+	)
+
+121 
+	#KEY_Dñëe
+ 0x4c
+
+	)
+
+122 
+	#KEY_End
+ 0x4d
+
+	)
+
+123 
+	#KEY_PageDown
+ 0x4e
+
+	)
+
+125 
+	#KEY_RightAºow
+ 0x4f
+
+	)
+
+126 
+	#KEY_Le·Aºow
+ 0x50
+
+	)
+
+127 
+	#KEY_DownAºow
+ 0x51
+
+	)
+
+128 
+	#KEY_UpAºow
+ 0x52
+
+	)
+
+131 
+	#KEY_NUMLOCK
+ 0x53
+
+	)
+
+132 
+	#KEY_NUM_DIV
+ 0x54
+
+133 
+	#KEY_NUM_MUL
+ 0x55
+
+134 
+	#KEY_NUM_MINUS
+ 0x56
+
+135 
+	#KEY_NUM_PLUS
+ 0x57
+
+136 
+	#KEY_NUM_ENTER
+ 0x58
+
+	)
+
+138 
+	#KEY_NUM_1
+ 0x59
+
+	)
+
+139 
+	#KEY_NUM_2
+ 0x5a
+
+	)
+
+140 
+	#KEY_NUM_3
+ 0x5b
+
+	)
+
+141 
+	#KEY_NUM_4
+ 0x5c
+
+	)
+
+142 
+	#KEY_NUM_5
+ 0x5d
+
+	)
+
+143 
+	#KEY_NUM_6
+ 0x5e
+
+	)
+
+144 
+	#KEY_NUM_7
+ 0x5f
+
+	)
+
+145 
+	#KEY_NUM_8
+ 0x60
+
+	)
+
+146 
+	#KEY_NUM_9
+ 0x61
+
+	)
+
+147 
+	#KEY_NUM_0
+ 0x62
+
+	)
+
+148 
+	#KEY_NUM_DOT
+ 0x63
+
+	)
+
+152 
+	#KEY_L_CTRL
+ 0xA0
+
+	)
+
+153 
+	#KEY_L_SHIFT
+ 0xA1
+
+	)
+
+154 
+	#KEY_L_ALT
+ 0xA2
+
+	)
+
+155 
+	#KEY_L_GUI
+ 0xA3
+
+	)
+
+156 
+	#KEY_R_CTRL
+ 0xA4
+
+	)
+
+157 
+	#KEY_R_SHIFT
+ 0xA5
+
+	)
+
+158 
+	#KEY_R_ALT
+ 0xA6
+
+	)
+
+159 
+	#KEY_R_GUI
+ 0xA7
+
+	)
+
+161 
+	#KEY_L_CTRL_BIT
+ 0x01
+
+162 
+	#KEY_L_SHIFT_BIT
+ 0x02
+
+163 
+	#KEY_L_ALT_BIT
+ 0x04
+
+164 
+	#KEY_L_GUI_BIT
+ 0x08
+
+165 
+	#KEY_R_CTRL_BIT
+ 0x10
+
+166 
+	#KEY_R_SHIFT_BIT
+ 0x20
+
+167 
+	#KEY_R_ALT_BIT
+ 0x40
+
+168 
+	#KEY_R_GUI_BIT
+ 0x80
+
+169 
+
+	)
+
+170 
+	#KEY_CODE29
+ 0x31
+
+	)
+
+171 
+	#KEY_CODE42
+ 0x32
+
+	)
+
+172 
+	#KEY_CODE45
+ 0x64
+
+	)
+
+173 
+	#KEY_APPS
+ 0x65
+
+	)
+
+174 
+	#KEY_CODE107
+ 0x1085
+
+	)
+
+175 
+	#KEY_CODE56
+ 0x1087
+
+	)
+
+176 
+	#KEY_CODE133
+ 0x1088
+
+	)
+
+177 
+	#KEY_CODE14
+ 0x1089
+
+	)
+
+178 
+	#KEY_CODE132
+ 0x108a
+
+	)
+
+179 
+	#KEY_CODE131
+ 0x108b
+
+	)
+
+180 
+	#KEY_CODE151
+ 0x2090
+
+181 
+	#KEY_CODE150
+ 0x2091
+
+182 
+
+	)
+
+184 
+	#KEY_NextTr
+ 0x4401
+
+185 
+	#KEY_PªvTr
+ 0x4402
+
+186 
+	#KEY_St›
+ 0x4404
+
+187 
+	#KEY_Eje˘
+ 0x4408
+
+188 
+	#KEY_PœyPau£
+ 0x4410
+
+189 
+	#KEY_Muã
+ 0x4420
+
+190 
+	#KEY_VﬁumI
+ 0x0440
+
+191 
+	#KEY_VﬁumD
+ 0x0480
+
+192 
+
+	)
+
+193 
+	#KEY_Medü
+ 0x4501
+
+194 
+	#KEY_Emaû
+ 0x4502
+
+195 
+	#KEY_CÆcuœt‹
+ 0x4504
+
+196 
+	#KEY_MyCompuãr
+ 0x4508
+
+197 
+	#KEY_Sórch
+ 0x4510
+
+198 
+	#KEY_WWW
+ 0x4520
+
+199 
+	#KEY_Back
+ 0x4540
+
+200 
+	#KEY_F‹w¨d
+ 0x4580
+
+201 
+
+	)
+
+202 
+	#KEY_iSt›
+ 0x4601
+
+203 
+	#KEY_Re‰esh
+ 0x4602
+
+204 
+	#KEY_Fav‹ôes
+ 0x4604
+
+205 
+
+	)
+
+206 
+	#KEY_Powî
+ 0x0701
+
+207 
+	#KEY_SÀï
+ 0x0702
+
+208 
+	#KEY_WakeUp
+ 0x0704
+
+209 
+
+	)
+
+210 
+	#KEY_U£r1
+ 0x4901
+
+211 
+	#KEY_U£r2
+ 0x4902
+
+212 
+	#KEY_U£r3
+ 0x4904
+
+213 
+	#KEY_U£r4
+ 0x4908
+
+214 
+	#KEY_U£r5
+ 0x4910
+
+215 
+	#KEY_U£r6
+ 0x4920
+
+216 
+	#KEY_U£r7
+ 0x4940
+
+217 
+	#KEY_U£r8
+ 0x4980
+
+218 
+
+	)
+
+219 
+	#KEY_Fn
+ 0x0c00
+
+	)
+
+221 
+	#KEY_U£r5_Fn
+ 0x0200
+
+	)
+
+222 
+	#KEY_S¸_Num
+ 0x0101
+
+	)
+
+223 
+	#KEY_mode1_7
+ 0x0102
+
+	)
+
+224 
+	#KEY_mode1_8
+ 0x0103
+
+	)
+
+225 
+	#KEY_mode1_9
+ 0x0104
+
+	)
+
+226 
+	#KEY_mode1_0
+ 0x0105
+
+	)
+
+227 
+	#KEY_mode1_U
+ 0x0106
+
+	)
+
+228 
+	#KEY_mode1_I
+ 0x0107
+
+	)
+
+229 
+	#KEY_mode1_O
+ 0x0108
+
+	)
+
+230 
+	#KEY_mode1_P
+ 0x0109
+
+	)
+
+231 
+	#KEY_mode1_J
+ 0x010A
+
+	)
+
+232 
+	#KEY_mode1_K
+ 0x010B
+
+	)
+
+233 
+	#KEY_mode1_L
+ 0x010C
+
+	)
+
+234 
+	#KEY_mode1_Semicﬁ⁄
+ 0x010D
+
+	)
+
+235 
+	#KEY_mode1_M
+ 0x010E
+
+	)
+
+236 
+	#KEY_mode1_COMMA
+ 0x010F
+
+	)
+
+237 
+	#KEY_mode1_PERIOD
+ 0x0110
+
+	)
+
+239 
+	#KEY_mode2_F1
+ 0x0211
+
+	)
+
+240 
+	#KEY_mode2_F2
+ 0x0212
+
+	)
+
+241 
+	#KEY_mode2_F3
+ 0x0213
+
+	)
+
+242 
+	#KEY_mode2_F4
+ 0x0214
+
+	)
+
+243 
+	#KEY_mode2_F5
+ 0x0215
+
+	)
+
+244 
+	#KEY_mode2_F6
+ 0x0216
+
+	)
+
+245 
+	#KEY_mode2_F7
+ 0x0217
+
+	)
+
+246 
+	#KEY_mode2_F8
+ 0x0218
+
+	)
+
+247 
+	#KEY_mode2_F9
+ 0x0219
+
+	)
+
+248 
+	#KEY_mode2_F10
+ 0x021a
+
+	)
+
+249 
+	#KEY_mode2_F11
+ 0x021b
+
+	)
+
+250 
+	#KEY_mode2_F12
+ 0x021c
+
+	)
+
+274 
+ªadsˇn
+();
+
+	@MAIN.c
+
+1 
+	~<sh68f83.h
+>
+
+2 
+	~"keybﬂrd.h
+"
+
+3 
+	~"usbc‹e.h
+"
+
+5 
+	gusbkeyd©
+[8];
+
+6 
+	gãmp
+=0;
+
+8 
+	$maö
+()
+
+11 
+	`usböô
+();
+
+14 
+	`ªadsˇn
+();
+
+15 
+ãmp
+ = 
+usbkeyd©
+[2];
+
+16 if(
+ãmp
+)
+
+17 
+usbkeyd©
+[0] = 0xFF;
+
+19 
+	}
+}
+
+21 
+	$IN0_öãºu±
+(Ë
+öãºu±
+ 10
+
+23 
+u8
+ 
+ªg
+ = 0;
+
+24 
+	`UsbEp0In
+();
+
+25 
+ªg
+ = 
+IF2
+ & (~
+IF_IN0
+);
+
+26 
+IF2
+ = 
+ªg
+;
+
+27 
+	}
+}
+
+29 
+	$OUT0_öãºu±
+(Ë
+öãºu±
+ 11
+
+31 
+u8
+ 
+ªg
+ = 0;
+
+32 
+	`UsbEp0Out
+();
+
+33 
+ªg
+ = 
+IF2
+ & (~
+IF_OUT0
+);
+
+34 
+IF2
+ = 
+ªg
+;
+
+35 
+	}
+}
+
+37 
+	$SIE_öãºu±
+(Ë
+öãºu±
+ 12
+
+39 
+u8
+ 
+ªg
+ = 0;
+
+40 
+	`UsbH™dÀr
+();
+
+41 
+ªg
+ = 
+IF2
+ & (~
+IF_SIE
+);
+
+42 
+IF2
+ = 
+ªg
+;
+
+43 
+	}
+}
+
+45 
+	$SETUP_öãºu±
+(Ë
+öãºu±
+ 8
+
+47 
+u8
+ 
+ªg
+ = 0;
+
+48 
+	`UsbSëup
+();
+
+49 
+ªg
+ = 
+IF2
+ & (~
+IF_STUP
+);
+
+50 
+IF2
+ = 
+ªg
+;
+
+51 
+	}
+}
+
+	@usb_hid.c
+
+1 
+	~"usb_hid.h
+"
+
+3 
+u8
+ 
+code
+ 
+	gDevi˚Des¸ùt‹
+[0x12]=
+
+25 
+U8
+ 
+code
+ 
+	gC⁄figuøti⁄Des¸ùt‹
+[9+9+9+7]=
+
+30 (
+C⁄figuøti⁄Des¸ùt‹
+)&0xFF,
+
+31 ((
+C⁄figuøti⁄Des¸ùt‹
+)>>8)&0xFF,
+
+56 (
+KeybﬂrdRï‹tDes¸ùt‹
+)&0xFF,
+
+57 ((
+KeybﬂrdRï‹tDes¸ùt‹
+)>>8)&0xFF,
+
+70 
+u8
+ 
+code
+ 
+	gJoy°ick_C⁄figDes¸ùt‹
+[
+JOYSTICK_SIZ_CONFIG_DESC
+] =
+
+74 
+USB_CONFIGURATION_DESCRIPTOR_TYPE
+,
+
+76 
+JOYSTICK_SIZ_CONFIG_DESC
+,
+
+108 (
+KeybﬂrdRï‹tDes¸ùt‹
+)&0xFF,
+
+109 ((
+KeybﬂrdRï‹tDes¸ùt‹
+)>>8)&0xFF,
+
+148 (
+Mou£Rï‹tDes¸ùt‹
+)&0xFF,
+
+149 ((
+Mou£Rï‹tDes¸ùt‹
+)>>8)&0xFF,
+
+161 
+u8
+ 
+code
+ 
+	gKeybﬂrdRï‹tDes¸ùt‹
+[
+KP_Rï‹tDes¸ùt‹_Size
+]=
+
+199 
+u8
+ 
+code
+ 
+	gMou£Rï‹tDes¸ùt‹
+[
+Mou£_Rï‹tDes¸ùt‹_Size
+]=
+
+	@usb_hid.h
+
+1 #i‚de‡
+__USB_HID_H
+
+
+2 
+	#__USB_HID_H
+
+
+	)
+
+3 
+	~<sh68F83.h
+>
+
+5 
+	#JOYSTICK_SIZ_CONFIG_DESC
+ 66
+
+	)
+
+6 
+	#KBD_REPORTDESCRIPTOR_SIZE
+ 63
+
+	)
+
+7 
+	#MOUSE_REPORTDESCRIPTS_SIZE
+ 54
+
+	)
+
+8 
+	#KBD_OFF_HID_DESC
+ 18
+
+	)
+
+9 
+	#Mou£_OFF_HID_DESC
+ 50
+
+	)
+
+11 
+u8
+ 
+Devi˚Des¸ùt‹
+[];
+
+12 
+u8
+ 
+C⁄figuøti⁄Des¸ùt‹
+[];
+
+13 
+u8
+ 
+Joy°ick_C⁄figDes¸ùt‹
+[
+JOYSTICK_SIZ_CONFIG_DESC
+];
+
+14 
+u8
+ 
+KeybﬂrdRï‹tDes¸ùt‹
+[
+KBD_REPORTDESCRIPTOR_SIZE
+];
+
+15 
+u8
+ 
+Mou£Rï‹tDes¸ùt‹
+[
+MOUSE_REPORTDESCRIPTS_SIZE
+];
+
+	@usbcore.c
+
+1 
+	~"HID.h
+"
+
+2 
+	~"usbc‹e.h
+"
+
+3 
+	~"c51ty≥.h
+"
+
+4 
+	~<öåös.h
+>
+
+6 
+u8
+ 
+	gbmReque°Ty≥
+;
+
+7 
+u8
+ 
+	gbReque°
+;
+
+8 
+u16
+ 
+	gwVÆue
+;
+
+9 
+u16
+ 
+	gwIndex
+;
+
+10 
+u16
+ 
+	gwLígth
+;
+
+12 
+u8
+ *
+	gpEp0RódD©a
+;
+
+13 
+u8
+ *
+	gpEp0SídD©a
+;
+
+14 
+u8
+ *
+	gpEp1SídD©a
+;
+
+15 
+u8
+ *
+	gpEp2SídD©a
+;
+
+16 
+u8
+ 
+	gEp0_rx˙t
+=0;
+
+17 
+u8
+ 
+	gEp0SídLí
+=0;
+
+18 
+u8
+ 
+	gEp1SídLí
+=0;
+
+19 
+u8
+ 
+	gEp2SídLí
+=0;
+
+20 
+u8
+ 
+	gEp0RódD©a
+[
+EP0_RD_LEN
+];
+
+21 
+u8
+ 
+	gGë_DevRùt‹_°
+;
+
+32 
+	$Ep0SídD©a
+()
+
+34 
+u8
+ 
+T0_FULL
+;
+
+35 
+u8
+ 
+ªg_Êg
+;
+
+37 
+ªg_Êg
+ = 
+TXFLG0
+ ;
+
+38 
+T0_FULL
+ = 
+ªg_Êg
+ & 0x01;
+
+39 if(!
+T0_FULL
+)
+
+41 if(
+Ep0SídLí
+ > 
+Devi˚Des¸ùt‹
+[7])
+
+44 
+TXDAT0
+ = 
+pEp0SídD©a
+;
+
+45 
+TXCNT0
+ = 
+Devi˚Des¸ùt‹
+[7];
+
+46 
+TXFLG0
+ = 
+ªg_Êg
+ | 0x01;
+
+48 
+Ep0SídLí
+ -
+Devi˚Des¸ùt‹
+[7];
+
+49 
+pEp0SídD©a
+ +
+Devi˚Des¸ùt‹
+[7];
+
+53 if(
+Ep0SídLí
+ != 0)
+
+56 
+TXDAT0
+ = 
+pEp0SídD©a
+;
+
+57 
+TXCNT0
+ = 
+Ep0SídLí
+;
+
+58 
+TXFLG0
+ = 
+ªg_Êg
+ | 0x01;
+
+60 
+Ep0SídLí
+ = 0;
+
+64 
+TXCNT0
+ = 0;
+
+65 
+TXFLG0
+ = 
+ªg_Êg
+ | 0x01;
+
+69 
+	}
+}
+
+72 
+	$Ep1SídD©a
+()
+
+74 
+u8
+ 
+T1_FULL
+;
+
+75 
+u8
+ 
+ªg_Êg
+;
+
+77 
+ªg_Êg
+ = 
+TXFLG1
+;
+
+78 
+T1_FULL
+ = 
+ªg_Êg
+ & 0x01;
+
+79 if(!
+T1_FULL
+)
+
+81 if(
+Ep1SídLí
+ > 
+Devi˚Des¸ùt‹
+[7])
+
+84 
+TXDAT1
+ = 
+pEp1SídD©a
+;
+
+85 
+TXCNT1
+ = 
+Devi˚Des¸ùt‹
+[7];
+
+86 
+TXFLG1
+ = 
+ªg_Êg
+ | 0x01;
+
+88 
+Ep1SídLí
+ -
+Devi˚Des¸ùt‹
+[7];
+
+89 
+pEp1SídD©a
+ +
+Devi˚Des¸ùt‹
+[7];
+
+93 if(
+Ep1SídLí
+ != 0)
+
+96 
+TXDAT1
+ = 
+pEp1SídD©a
+;
+
+97 
+TXCNT1
+ = 
+Ep1SídLí
+;
+
+98 
+TXFLG1
+ = 
+ªg_Êg
+ | 0x01;
+
+100 
+Ep1SídLí
+ = 0;
+
+104 
+TXCNT1
+ = 0;
+
+105 
+TXFLG1
+ = 
+ªg_Êg
+ | 0x01;
+
+109 
+	}
+}
+
+111 
+	$Ep2SídD©a
+()
+
+113 
+u8
+ 
+T2_FULL
+;
+
+114 
+u8
+ 
+ªg_Êg
+;
+
+116 
+ªg_Êg
+ = 
+TXFLG2
+;
+
+117 
+T2_FULL
+ = 
+ªg_Êg
+ & 0x01;
+
+118 if(!
+T2_FULL
+)
+
+120 if(
+Ep2SídLí
+ > 
+Devi˚Des¸ùt‹
+[7])
+
+123 
+TXDAT2
+ = 
+pEp2SídD©a
+;
+
+124 
+TXCNT2
+ = 
+Devi˚Des¸ùt‹
+[7];
+
+125 
+TXFLG2
+ = 
+ªg_Êg
+ | 0x01;
+
+127 
+Ep2SídLí
+ -
+Devi˚Des¸ùt‹
+[7];
+
+128 
+pEp2SídD©a
+ +
+Devi˚Des¸ùt‹
+[7];
+
+132 if(
+Ep2SídLí
+ != 0)
+
+135 
+TXDAT2
+ = 
+pEp2SídD©a
+;
+
+136 
+TXCNT2
+ = 
+Ep2SídLí
+;
+
+137 
+TXFLG2
+ = 
+ªg_Êg
+ | 0x01;
+
+139 
+Ep2SídLí
+ = 0;
+
+143 
+TXCNT2
+ = 0;
+
+144 
+TXFLG2
+ = 
+ªg_Êg
+ | 0x01;
+
+148 
+	}
+}
+
+150 
+	$UsbEp0Re˚iveD©a
+()
+
+152 
+u8
+ 
+T0_FULL
+;
+
+153 
+u8
+ 
+ªg_Êg
+;
+
+154 
+u8
+ 
+i
+ = 0;
+
+155 
+ªg_Êg
+ = 
+RXFLG0
+ ;
+
+156 
+T0_FULL
+ = 
+ªg_Êg
+ & 0x01;
+
+157 if(
+T0_FULL
+)
+
+159 
+Ep0_rx˙t
+ = 
+RXCNT0
+;
+
+161 
+pEp0RódD©a
+ +
+Ep0_rx˙t
+;
+
+162 if((
+pEp0RódD©a
+ - 
+Ep0RódD©a
+Ë> 
+EP0_RD_LEN
+)
+
+164 
+pEp0RódD©a
+ = 
+Ep0RódD©a
+;
+
+166 
+RXDAT0
+ = 
+pEp0RódD©a
+;
+
+167 
+TXFLG0
+ = 
+ªg_Êg
+ & 0xFE;
+
+169 
+	}
+}
+
+171 
+	$UsbEp0SídD©a
+(
+u8
+ *
+pSídD©a
+,u8 
+Àn
+)
+
+173 
+pEp0SídD©a
+ = 
+pSídD©a
+;
+
+174 
+Ep0SídLí
+ = 
+Àn
+;
+
+175 
+	`Ep0SídD©a
+();
+
+176 
+	}
+}
+
+178 
+	$UsbEp1SídD©a
+(
+u8
+ *
+pSídD©a
+,u8 
+Àn
+)
+
+180 
+pEp1SídD©a
+ = 
+pSídD©a
+;
+
+181 
+Ep1SídLí
+ = 
+Àn
+;
+
+182 
+	`Ep1SídD©a
+();
+
+183 
+	}
+}
+
+185 
+	$UsbEp2SídD©a
+(
+u8
+ *
+pSídD©a
+,u8 
+Àn
+)
+
+187 
+pEp2SídD©a
+ = 
+pSídD©a
+;
+
+188 
+Ep2SídLí
+ = 
+Àn
+;
+
+189 
+	`Ep2SídD©a
+();
+
+190 
+	}
+}
+
+193 
+	$Usbï0out
+()
+
+195 
+	`UsbEp0Re˚iveD©a
+();
+
+196 
+	}
+}
+
+198 
+	$UsbEp0In
+()
+
+200 
+	`Ep0SídD©a
+();
+
+201 
+	}
+}
+
+203 
+	$UsbEp1In
+()
+
+205 
+	`Ep1SídD©a
+();
+
+206 
+	}
+}
+
+208 
+	$UsbEp2In
+()
+
+210 
+	`Ep2SídD©a
+();
+
+211 
+	}
+}
+
+213 
+	$usbgë_des¸ùt‹
+(
+u16
+ 
+wVÆue
+,u16 
+wIndex
+,u16 
+wLígth
+)
+
+215 
+u8
+ 
+descRùå
+;
+
+216 
+u8
+ 
+SídLí
+;
+
+217 
+u8
+ 
+pSídD©a
+;
+
+219 
+descRùå
+ = (
+wVÆue
+ >> 8) & 0xFF;
+
+220 
+descRùå
+)
+
+222 
+DEVICE_DESCRIPTOR
+:
+
+224 
+pSídD©a
+ = 
+Devi˚Des¸ùt‹
+;
+
+226 if(
+Gë_DevRùt‹_°
+ == 0)
+
+228 
+Gë_DevRùt‹_°
+ = 1;
+
+229 
+SídLí
+ = 8;
+
+233 if(
+wLígth
+ > 
+Devi˚Des¸ùt‹
+[0])
+
+235 
+SídLí
+ = 
+Devi˚Des¸ùt‹
+[0];
+
+240 
+SídLí
+ = 
+wLígth
+;
+
+243 
+	`UsbEp0SídD©a
+(
+pSídD©a
+,
+SídLí
+);
+
+246 
+CONFIGURATION_DESCRIPTOR
+:
+
+248 
+pSídD©a
+ = 
+C⁄figuøti⁄Des¸ùt‹
+;
+
+251 
+STRING_DESCRIPTOR
+:
+
+253 
+INTERFACE_DESCRIPTOR
+:
+
+255 
+ENDPOINT_DESCRIPTORE
+:
+
+261 
+	}
+}
+
+264 
+	$UsbSëup
+()
+
+266 
+u8
+ 
+usbaddªss
+ = 0;
+
+267 
+u8
+ 
+ãmp
+ = 0;
+
+268 
+u8
+ 
+bmReque°Ty≥
+;
+
+269 
+u8
+ 
+bReque°
+;
+
+270 
+u16
+ 
+wVÆue
+;
+
+271 
+u16
+ 
+wIndex
+;
+
+272 
+u16
+ 
+wLígth
+;
+
+274 
+bmReque°Ty≥
+ = 
+Ep0RódD©a
+[0];
+
+275 
+bReque°
+ = 
+Ep0RódD©a
+[1];
+
+276 
+wVÆue
+ = 
+Ep0RódD©a
+[2] + (((
+u16
+)Ep0ReadData[3])<<8);
+
+277 
+wIndex
+ = 
+Ep0RódD©a
+[4] + (((
+u16
+)Ep0ReadData[5])<<8);
+
+278 
+wLígth
+ = 
+Ep0RódD©a
+[6] + (((
+u16
+)Ep0ReadData[7])<<8);
+
+280 if((
+bmReque°Ty≥
+ & 0x80) == 0x80)
+
+282 (
+bmReque°Ty≥
+>>5)&0x03)
+
+285 
+bReque°
+)
+
+287 
+GET_CONFIGURATION
+:
+
+290 
+GET_DESCRIPTOR
+:
+
+291 
+	`usbgë_des¸ùt‹
+(
+wVÆue
+,
+wIndex
+,
+wLígth
+);
+
+294 
+GET_INTERFACE
+:
+
+296 
+GET_STATUS
+:
+
+298 
+SYNCH_FRAME
+:
+
+312 (
+bmReque°Ty≥
+>>5)&0x03)
+
+315 
+bReque°
+)
+
+317 
+CLEAR_FEATURE
+:
+
+319 
+SET_ADDRESS
+:
+
+320 
+usbaddªss
+ = 
+wVÆue
+ 0xEF;
+
+321 
+ãmp
+ = 0 ;
+
+322 
+	`UsbEp0SídD©a
+(&
+ãmp
+,0);
+
+323 
+DADDR
+ = 
+usbaddªss
+;
+
+325 
+SET_CONFIGURATION
+:
+
+327 
+SET_DESCRIPTOR
+:
+
+329 
+SET_FEATURE
+:
+
+331 
+SET_INTERFACE
+:
+
+340 
+pEp0RódD©a
+ = 
+Ep0RódD©a
+;
+
+341 
+RXDAT0
+ = 
+pEp0RódD©a
+;
+
+345 
+	`UsbH™dÀr
+()
+
+347 
+u8
+ 
+usb_tokí
+;
+
+349 
+usb_tokí
+ = 
+IRQFG
+;
+
+350 if(
+USBRSTIF
+){USBRSTIF = 0;
+	`UsbBusRe£t
+();}
+
+353 if(
+usb_tokí
+ & 
+IRQF_IN1
+)
+
+355 
+	`UsbEp1In
+();
+
+356 
+usb_tokí
+ &(~
+IRQF_IN1
+);
+
+357 
+IRQFG
+ = 
+usb_tokí
+;
+
+359 if(
+usb_tokí
+ & 
+IRQF_IN2
+)
+
+361 
+	`UsbEp2In
+();
+
+362 
+usb_tokí
+ &(~
+IRQF_IN2
+);
+
+363 
+IRQFG
+ = 
+usb_tokí
+;
+
+368 
+	`usböô
+()
+
+370 
+DFC
+ = 
+PULL_UP
+ | 
+USB_CON
+ | 
+USB_EN
+ | 
+VPCON
+ | 
+FW_K
+ ;
+
+371 
+IE2
+ = 
+IE_EIN0
+ | 
+IE_EOUT0
+ | 
+IE_ESIE
+ ;
+
+372 
+IRQEN
+ = 
+IRQE_EIN1
+ | 
+IRQE_EIN2
+ ;
+
+373 
+Gë_DevRùt‹_°
+ = 0;
+
+	@usbcore.h
+
+1 #i‚de‡
+__USBCORE_H
+
+
+2 
+	#__USBCORE_H
+
+
+	)
+
+3 
+	~<sh68F83.h
+>
+
+7 
+	#PULL_UP
+ 0x80
+
+8 
+	#USB_CON
+ 0x40
+
+9 
+	#FW_K
+ 0x20
+
+10 
+	#RSU_SEL
+ 0x10
+
+11 
+	#USB_EN
+ 0x08
+
+12 
+	#ERW_UP
+ 0x02
+
+13 
+	#VPCON
+ 0x01
+
+15 
+	#IE_ESTUP
+ 0x01
+
+	)
+
+16 
+	#IE_EOWSTUP
+ 0x02
+
+	)
+
+17 
+	#IE_EOT0ERR
+ 0x04
+
+	)
+
+18 
+	#IE_EIN0
+ 0x08
+
+	)
+
+19 
+	#IE_EOUT0
+ 0x10
+
+	)
+
+20 
+	#IE_ESIE
+ 0x20
+
+	)
+
+21 
+	#IE_EFUN
+ 0x40
+
+	)
+
+23 
+	#IRQE_ENAKT0
+ 0x01
+
+	)
+
+24 
+	#IRQE_ENAKR0
+ 0x02
+
+	)
+
+25 
+	#IRQE_ENAK1
+ 0x04
+
+	)
+
+26 
+	#IRQE_ENAK2
+ 0x08
+
+	)
+
+27 
+	#IRQE_ET0STL
+ 0x10
+
+	)
+
+28 
+	#IRQE_ER0STL
+ 0x20
+
+	)
+
+29 
+	#IRQE_EIN1
+ 0x40
+
+	)
+
+30 
+	#IRQE_EIN2
+ 0x80
+
+	)
+
+32 
+	#IF_STUP
+ 0x01
+
+	)
+
+33 
+	#IF_OWSTUP
+ 0x02
+
+	)
+
+34 
+	#IF_OT0ERR
+ 0x04
+
+	)
+
+35 
+	#IF_IN0
+ 0x08
+
+	)
+
+36 
+	#IF_OUT0
+ 0x10
+
+	)
+
+37 
+	#IF_SIE
+ 0x20
+
+	)
+
+38 
+	#IF_FUN
+ 0x40
+
+	)
+
+40 
+	#IRQF_NAKT0
+ 0x01
+
+	)
+
+41 
+	#IRQF_NAKR0
+ 0x02
+
+	)
+
+42 
+	#IRQF_NAK1
+ 0x04
+
+	)
+
+43 
+	#IRQF_NAK2
+ 0x08
+
+	)
+
+44 
+	#IRQF_T0STL
+ 0x10
+
+	)
+
+45 
+	#IRQF_R0STL
+ 0x20
+
+	)
+
+46 
+	#IRQF_IN1
+ 0x40
+
+	)
+
+47 
+	#IRQF_IN2
+ 0x80
+
+	)
+
+51 
+	#GET_STATUS
+ 0
+
+	)
+
+52 
+	#CLEAR_FEATURE
+ 1
+
+	)
+
+53 
+	#SET_FEATURE
+ 3
+
+	)
+
+54 
+	#SET_ADDRESS
+ 5
+
+	)
+
+55 
+	#GET_DESCRIPTOR
+ 6
+
+	)
+
+56 
+	#SET_DESCRIPTOR
+ 7
+
+	)
+
+57 
+	#GET_CONFIGURATION
+ 8
+
+	)
+
+58 
+	#SET_CONFIGURATION
+ 9
+
+	)
+
+59 
+	#GET_INTERFACE
+ 10
+
+	)
+
+60 
+	#SET_INTERFACE
+ 11
+
+	)
+
+61 
+	#SYNCH_FRAME
+ 12
+
+	)
+
+63 
+	#DEVICE_DESCRIPTOR
+ 1
+
+	)
+
+64 
+	#CONFIGURATION_DESCRIPTOR
+ 2
+
+	)
+
+65 
+	#STRING_DESCRIPTOR
+ 3
+
+	)
+
+66 
+	#INTERFACE_DESCRIPTOR
+ 4
+
+	)
+
+67 
+	#ENDPOINT_DESCRIPTOR
+ 5
+
+	)
+
+69 
+	#USB_BUF_LEN
+ 8
+
+	)
+
+70 
+	#EP0_RD_LEN
+ 18
+
+	)
+
+72 
+UsbEp0Out
+();
+
+73 
+UsbEp0In
+();
+
+74 
+UsbEp1In
+();
+
+75 
+UsbEp2In
+();
+
+77 
+usböô
+();
+
+78 
+UsbH™dÀr
+();
+
+79 
+UsbSëup
+();
+
+	@keyboard.h
+
+1 #i‚de‡ 
+__KEY_BOARD_H
+
+
+2 
+	#__KEY_BOARD_H
+
+
+	)
+
+4 
+	~<sh68F83.h
+>
+
+5 
+	~<öåös.h
+>
+
+34 
+	#GPIO_ALL_HIGH
+(Ë
+P0
+=0xFF;
+P1
+=0xFF;
+P2
+=0xFF
+
+	)
+
+35 
+	#GPIO_COL
+ 
+P2
+
+
+	)
+
+36 
+	#GPIO_ROW1
+ 
+P1
+
+
+	)
+
+37 
+	#GPIO_ROW2
+ 
+P3
+
+
+	)
+
+41 
+	#KEY_BUF_END
+ 0x06
+
+	)
+
+42 
+	#FnKeyIndex
+ 0xB0
+
+	)
+
+44 
+	#KEY_A
+ 0x04
+
+	)
+
+45 
+	#KEY_B
+ 0x05
+
+	)
+
+46 
+	#KEY_C
+ 0x06
+
+	)
+
+47 
+	#KEY_D
+ 0x07
+
+	)
+
+48 
+	#KEY_E
+ 0x08
+
+	)
+
+49 
+	#KEY_F
+ 0x09
+
+	)
+
+50 
+	#KEY_G
+ 0x0a
+
+	)
+
+51 
+	#KEY_H
+ 0x0b
+
+	)
+
+52 
+	#KEY_I
+ 0x0c
+
+	)
+
+53 
+	#KEY_J
+ 0x0d
+
+	)
+
+54 
+	#KEY_K
+ 0x0e
+
+	)
+
+55 
+	#KEY_L
+ 0x0f
+
+	)
+
+56 
+	#KEY_M
+ 0x10
+
+	)
+
+57 
+	#KEY_N
+ 0x11
+
+	)
+
+58 
+	#KEY_O
+ 0x12
+
+	)
+
+59 
+	#KEY_P
+ 0x13
+
+	)
+
+60 
+	#KEY_Q
+ 0x14
+
+	)
+
+61 
+	#KEY_R
+ 0x15
+
+	)
+
+62 
+	#KEY_S
+ 0x16
+
+	)
+
+63 
+	#KEY_T
+ 0x17
+
+	)
+
+64 
+	#KEY_U
+ 0x18
+
+	)
+
+65 
+	#KEY_V
+ 0x19
+
+	)
+
+66 
+	#KEY_W
+ 0x1a
+
+	)
+
+67 
+	#KEY_X
+ 0x1b
+
+	)
+
+68 
+	#KEY_Y
+ 0x1c
+
+	)
+
+69 
+	#KEY_Z
+ 0x1d
+
+	)
+
+71 
+	#KEY_1
+ 0x1e
+
+	)
+
+72 
+	#KEY_2
+ 0x1f
+
+	)
+
+73 
+	#KEY_3
+ 0x20
+
+	)
+
+74 
+	#KEY_4
+ 0x21
+
+	)
+
+75 
+	#KEY_5
+ 0x22
+
+	)
+
+76 
+	#KEY_6
+ 0x23
+
+	)
+
+77 
+	#KEY_7
+ 0x24
+
+	)
+
+78 
+	#KEY_8
+ 0x25
+
+	)
+
+79 
+	#KEY_9
+ 0x26
+
+	)
+
+80 
+	#KEY_0
+ 0x27
+
+	)
+
+82 
+	#KEY_ENTER
+ 0x28
+
+	)
+
+83 
+	#KEY_ESCAPE
+ 0x29
+
+	)
+
+84 
+	#KEY_Back•a˚
+ 0x2a
+
+	)
+
+85 
+	#KEY_Tab
+ 0x2b
+
+	)
+
+86 
+	#KEY_SPACEBAR
+ 0x2c
+
+	)
+
+88 
+	#KEY_Undîsc‹e
+ 0x2d
+
+89 
+	#KEY_EquÆSign
+ 0x2e
+
+90 
+	#KEY_L_Bøckës
+ 0x2f
+
+91 
+	#KEY_R_Bøckës
+ 0x30
+
+92 
+	#KEY_Sœsh
+ 0x31
+
+93 
+	#KEY_Semicﬁ⁄
+ 0x33
+
+94 
+	#KEY_QuŸ©i⁄
+ 0x34
+
+95 
+	#KEY_TILDE
+ 0x35
+
+96 
+	#KEY_COMMA
+ 0x36
+
+97 
+	#KEY_PERIOD
+ 0x37
+
+98 
+	#KEY_I¡îrog©i⁄
+ 0x38
+
+99 
+
+	)
+
+100 
+	#KEY_CAPSLOCK
+ 0x39
+
+	)
+
+102 
+	#KEY_F1
+ 0x3a
+
+	)
+
+103 
+	#KEY_F2
+ 0x3b
+
+	)
+
+104 
+	#KEY_F3
+ 0x3c
+
+	)
+
+105 
+	#KEY_F4
+ 0x3d
+
+	)
+
+106 
+	#KEY_F5
+ 0x3e
+
+	)
+
+107 
+	#KEY_F6
+ 0x3f
+
+	)
+
+108 
+	#KEY_F7
+ 0x40
+
+	)
+
+109 
+	#KEY_F8
+ 0x41
+
+	)
+
+110 
+	#KEY_F9
+ 0x42
+
+	)
+
+111 
+	#KEY_F10
+ 0x43
+
+	)
+
+112 
+	#KEY_F11
+ 0x44
+
+	)
+
+113 
+	#KEY_F12
+ 0x45
+
+	)
+
+115 
+	#KEY_PrötS¸ìn
+ 0x46
+
+	)
+
+116 
+	#KEY_S¸ﬁlLock
+ 0x47
+
+	)
+
+117 
+	#KEY_Pau£
+ 0x48
+
+	)
+
+118 
+	#KEY_In£π
+ 0x49
+
+	)
+
+119 
+	#KEY_Home
+ 0x4a
+
+	)
+
+120 
+	#KEY_PageUp
+ 0x4b
+
+	)
+
+121 
+	#KEY_Dñëe
+ 0x4c
+
+	)
+
+122 
+	#KEY_End
+ 0x4d
+
+	)
+
+123 
+	#KEY_PageDown
+ 0x4e
+
+	)
+
+125 
+	#KEY_RightAºow
+ 0x4f
+
+	)
+
+126 
+	#KEY_Le·Aºow
+ 0x50
+
+	)
+
+127 
+	#KEY_DownAºow
+ 0x51
+
+	)
+
+128 
+	#KEY_UpAºow
+ 0x52
+
+	)
+
+131 
+	#KEY_NUMLOCK
+ 0x53
+
+	)
+
+132 
+	#KEY_NUM_DIV
+ 0x54
+
+133 
+	#KEY_NUM_MUL
+ 0x55
+
+134 
+	#KEY_NUM_MINUS
+ 0x56
+
+135 
+	#KEY_NUM_PLUS
+ 0x57
+
+136 
+	#KEY_NUM_ENTER
+ 0x58
+
+	)
+
+138 
+	#KEY_NUM_1
+ 0x59
+
+	)
+
+139 
+	#KEY_NUM_2
+ 0x5a
+
+	)
+
+140 
+	#KEY_NUM_3
+ 0x5b
+
+	)
+
+141 
+	#KEY_NUM_4
+ 0x5c
+
+	)
+
+142 
+	#KEY_NUM_5
+ 0x5d
+
+	)
+
+143 
+	#KEY_NUM_6
+ 0x5e
+
+	)
+
+144 
+	#KEY_NUM_7
+ 0x5f
+
+	)
+
+145 
+	#KEY_NUM_8
+ 0x60
+
+	)
+
+146 
+	#KEY_NUM_9
+ 0x61
+
+	)
+
+147 
+	#KEY_NUM_0
+ 0x62
+
+	)
+
+148 
+	#KEY_NUM_DOT
+ 0x63
+
+	)
+
+152 
+	#KEY_L_CTRL
+ 0xA0
+
+	)
+
+153 
+	#KEY_L_SHIFT
+ 0xA1
+
+	)
+
+154 
+	#KEY_L_ALT
+ 0xA2
+
+	)
+
+155 
+	#KEY_L_GUI
+ 0xA3
+
+	)
+
+156 
+	#KEY_R_CTRL
+ 0xA4
+
+	)
+
+157 
+	#KEY_R_SHIFT
+ 0xA5
+
+	)
+
+158 
+	#KEY_R_ALT
+ 0xA6
+
+	)
+
+159 
+	#KEY_R_GUI
+ 0xA7
+
+	)
+
+161 
+	#KEY_L_CTRL_BIT
+ 0x01
+
+162 
+	#KEY_L_SHIFT_BIT
+ 0x02
+
+163 
+	#KEY_L_ALT_BIT
+ 0x04
+
+164 
+	#KEY_L_GUI_BIT
+ 0x08
+
+165 
+	#KEY_R_CTRL_BIT
+ 0x10
+
+166 
+	#KEY_R_SHIFT_BIT
+ 0x20
+
+167 
+	#KEY_R_ALT_BIT
+ 0x40
+
+168 
+	#KEY_R_GUI_BIT
+ 0x80
+
+169 
+
+	)
+
+170 
+	#KEY_CODE29
+ 0x31
+
+	)
+
+171 
+	#KEY_CODE42
+ 0x32
+
+	)
+
+172 
+	#KEY_CODE45
+ 0x64
+
+	)
+
+173 
+	#KEY_APPS
+ 0x65
+
+	)
+
+174 
+	#KEY_CODE107
+ 0x1085
+
+	)
+
+175 
+	#KEY_CODE56
+ 0x1087
+
+	)
+
+176 
+	#KEY_CODE133
+ 0x1088
+
+	)
+
+177 
+	#KEY_CODE14
+ 0x1089
+
+	)
+
+178 
+	#KEY_CODE132
+ 0x108a
+
+	)
+
+179 
+	#KEY_CODE131
+ 0x108b
+
+	)
+
+180 
+	#KEY_CODE151
+ 0x2090
+
+181 
+	#KEY_CODE150
+ 0x2091
+
+182 
+
+	)
+
+184 
+	#KEY_NextTr
+ 0x4401
+
+185 
+	#KEY_PªvTr
+ 0x4402
+
+186 
+	#KEY_St›
+ 0x4404
+
+187 
+	#KEY_Eje˘
+ 0x4408
+
+188 
+	#KEY_PœyPau£
+ 0x4410
+
+189 
+	#KEY_Muã
+ 0x4420
+
+190 
+	#KEY_VﬁumI
+ 0x0440
+
+191 
+	#KEY_VﬁumD
+ 0x0480
+
+192 
+
+	)
+
+193 
+	#KEY_Medü
+ 0x4501
+
+194 
+	#KEY_Emaû
+ 0x4502
+
+195 
+	#KEY_CÆcuœt‹
+ 0x4504
+
+196 
+	#KEY_MyCompuãr
+ 0x4508
+
+197 
+	#KEY_Sórch
+ 0x4510
+
+198 
+	#KEY_WWW
+ 0x4520
+
+199 
+	#KEY_Back
+ 0x4540
+
+200 
+	#KEY_F‹w¨d
+ 0x4580
+
+201 
+
+	)
+
+202 
+	#KEY_iSt›
+ 0x4601
+
+203 
+	#KEY_Re‰esh
+ 0x4602
+
+204 
+	#KEY_Fav‹ôes
+ 0x4604
+
+205 
+
+	)
+
+206 
+	#KEY_Powî
+ 0x0701
+
+207 
+	#KEY_SÀï
+ 0x0702
+
+208 
+	#KEY_WakeUp
+ 0x0704
+
+209 
+
+	)
+
+210 
+	#KEY_U£r1
+ 0x4901
+
+211 
+	#KEY_U£r2
+ 0x4902
+
+212 
+	#KEY_U£r3
+ 0x4904
+
+213 
+	#KEY_U£r4
+ 0x4908
+
+214 
+	#KEY_U£r5
+ 0x4910
+
+215 
+	#KEY_U£r6
+ 0x4920
+
+216 
+	#KEY_U£r7
+ 0x4940
+
+217 
+	#KEY_U£r8
+ 0x4980
+
+218 
+
+	)
+
+219 
+	#KEY_Fn
+ 0x0c00
+
+	)
+
+221 
+	#KEY_U£r5_Fn
+ 0x0200
+
+	)
+
+222 
+	#KEY_S¸_Num
+ 0x0101
+
+	)
+
+223 
+	#KEY_mode1_7
+ 0x0102
+
+	)
+
+224 
+	#KEY_mode1_8
+ 0x0103
+
+	)
+
+225 
+	#KEY_mode1_9
+ 0x0104
+
+	)
+
+226 
+	#KEY_mode1_0
+ 0x0105
+
+	)
+
+227 
+	#KEY_mode1_U
+ 0x0106
+
+	)
+
+228 
+	#KEY_mode1_I
+ 0x0107
+
+	)
+
+229 
+	#KEY_mode1_O
+ 0x0108
+
+	)
+
+230 
+	#KEY_mode1_P
+ 0x0109
+
+	)
+
+231 
+	#KEY_mode1_J
+ 0x010A
+
+	)
+
+232 
+	#KEY_mode1_K
+ 0x010B
+
+	)
+
+233 
+	#KEY_mode1_L
+ 0x010C
+
+	)
+
+234 
+	#KEY_mode1_Semicﬁ⁄
+ 0x010D
+
+	)
+
+235 
+	#KEY_mode1_M
+ 0x010E
+
+	)
+
+236 
+	#KEY_mode1_COMMA
+ 0x010F
+
+	)
+
+237 
+	#KEY_mode1_PERIOD
+ 0x0110
+
+	)
+
+239 
+	#KEY_mode2_F1
+ 0x0211
+
+	)
+
+240 
+	#KEY_mode2_F2
+ 0x0212
+
+	)
+
+241 
+	#KEY_mode2_F3
+ 0x0213
+
+	)
+
+242 
+	#KEY_mode2_F4
+ 0x0214
+
+	)
+
+243 
+	#KEY_mode2_F5
+ 0x0215
+
+	)
+
+244 
+	#KEY_mode2_F6
+ 0x0216
+
+	)
+
+245 
+	#KEY_mode2_F7
+ 0x0217
+
+	)
+
+246 
+	#KEY_mode2_F8
+ 0x0218
+
+	)
+
+247 
+	#KEY_mode2_F9
+ 0x0219
+
+	)
+
+248 
+	#KEY_mode2_F10
+ 0x021a
+
+	)
+
+249 
+	#KEY_mode2_F11
+ 0x021b
+
+	)
+
+250 
+	#KEY_mode2_F12
+ 0x021c
+
+	)
+
+274 
+ªadsˇn
+();
+
+	@
+1
+.
+0
+10
+98
+51_iic.c
+51_iic.h
+Keyboard.c
+Keyboard.h
+MAIN.c
+usb_hid.c
+usb_hid.h
+usbcore.c
+usbcore.h
+keyboard.h
