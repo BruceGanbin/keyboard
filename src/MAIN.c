@@ -5,6 +5,8 @@
 unsigned char usbkeydat[8];
 unsigned char temp=0;
 
+void system_init(void);
+
 void main(void)
 {
 
@@ -51,4 +53,7 @@ void SETUP_interrupt(void) interrupt 8 // or 9
 }
 
 
+void system_init(void)
+{
 
+}

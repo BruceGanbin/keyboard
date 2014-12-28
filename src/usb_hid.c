@@ -76,13 +76,13 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     JOYSTICK_SIZ_CONFIG_DESC,
     /* wTotalLength: Bytes returned */
     0x00,
-  
+
     0x02, //bNumInterfaces×Ö¶Î
     0x01, //bConfiguration×Ö¶Î
     0x00, //iConfigurationz×Ö¶Î
     0x80, //bmAttributes×Ö¶Î
     0x32, //bMaxPower×Ö¶Î
-  
+
     /*******************µÚÒ»¸ö½Ó¿ÚÃèÊö·û*********************/
     0x09, //bLength×Ö¶Î
     0x04, //bDescriptorType×Ö¶Î
@@ -93,7 +93,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x01, //bInterfaceSubClass×Ö¶Î
     0x01, //bInterfaceProtocol×Ö¶Î
     0x00, //iConfiguration×Ö¶Î
-  
+
     /******************HIDÃèÊö·û************************/
     0x09, //bLength×Ö¶Î
     0x21, //bDescriptorType×Ö¶Î
@@ -102,12 +102,12 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x21, //bCountyCode×Ö¶Î
     0x01, //bNumDescriptors×Ö¶Î
     0x22, //bDescriptorType×Ö¶Î
-  
+
     //bDescriptorLength×Ö¶Î¡£
     //ÏÂ¼¶ÃèÊö·ûµÄ³¤¶È¡£ÏÂ¼¶ÃèÊö·ûÎª¼üÅÌ±¨¸æÃèÊö·û¡£
     sizeof(KeyboardReportDescriptor)&0xFF,
     (sizeof(KeyboardReportDescriptor)>>8)&0xFF,
-  
+
     /**********************ÊäÈë¶ËµãÃèÊö·û***********************/
     0x07, //bLength×Ö¶Î
     0x05, //bDescriptorType×Ö¶Î
@@ -116,7 +116,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x10, //wMaxPacketSize×Ö¶Î
     0x00,
     0x0A, //bInterval×Ö¶Î
-  
+
     /**********************Êä³ö¶ËµãÃèÊö·û***********************/
     0x07, //bLength×Ö¶Î
     0x05, //bDescriptorType×Ö¶Î
@@ -125,7 +125,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x10, //wMaxPacketSize×Ö¶Î
     0x00,
     0x0A, //bInterval×Ö¶Î
-  
+
     /*******************µÚ¶þ¸ö½Ó¿ÚÃèÊö·û*********************/
     0x09, //bLength×Ö¶Î
     0x04, //bDescriptorType×Ö¶Î
@@ -136,7 +136,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x01, //bInterfaceSubClass×Ö¶Î
     0x02, //bInterfaceProtocol×Ö¶Î
     0x00, //iConfiguration×Ö¶Î
-  
+
     /******************HIDÃèÊö·û************************/
     0x09, //bLength×Ö¶Î
     0x21, //bDescriptorType×Ö¶Î
@@ -147,7 +147,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x22, //bDescriptorType×Ö¶Î
     sizeof(MouseReportDescriptor)&0xFF,  //bDescriptorLength×Ö¶Î
     (sizeof(MouseReportDescriptor)>>8)&0xFF,
-  
+
     /**********************ÊäÈë¶ËµãÃèÊö·û***********************/
     0x07, //bLength×Ö¶Î
     0x05, //bDescriptorType×Ö¶Î
@@ -228,3 +228,22 @@ u8 code MouseReportDescriptor[Mouse_ReportDescriptor_Size]=
     0xc0                           //   END_COLLECTION
 };
 
+u8 code LanguageId[1]   //[LANGUAGE_ID_SIZE]
+{
+
+};
+
+u8 code ManufacturerStringDescriptor[1] //[MANUFACTUREER_SIZE]
+{
+
+};
+
+u8 code ProductStringDescriptor[1] //[PRODUCT_SIZE]
+{
+
+};
+
+u8 code SerialNumberStringDescriptor[1] //[SERIAL_NUM_SIZE]
+{
+
+};

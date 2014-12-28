@@ -45,7 +45,14 @@
 #define IRQF_R0STL             0x20
 #define IRQF_IN1               0x40
 #define IRQF_IN2               0x80
-
+//MODE_FG
+#define MODE_SUSF              0x01
+#define MODE_POF               0x02
+#define MODE_USBRST            0x04
+#define MODE_WDT               0x08
+#define MODE_TRGRST            0x10
+#define MODE_WKUP              0x20
+#define MODE_Nonidle           0x40
 
 //SETUP token                 
 #define GET_STATUS             0
@@ -65,6 +72,7 @@
 #define STRING_DESCRIPTOR         3
 #define INTERFACE_DESCRIPTOR      4
 #define ENDPOINT_DESCRIPTOR       5
+#define REPORT_DESCRIPTOR         0x22
 
 #define USB_BUF_LEN            8
 #define EP0_RD_LEN             18

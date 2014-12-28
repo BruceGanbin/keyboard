@@ -9,6 +9,11 @@
 #define MOUSE_REPORTDESCRIPTS_SIZE              54
 #define KBD_OFF_HID_DESC                        18
 #define Mouse_OFF_HID_DESC                      50
+#define LANGUAGE_ID_SIZE                        4
+#define MANUFACTUREER_SIZE                      20
+#define PRODUCT_SIZE                            20
+#define SERIAL_NUM_SIZE                         20
+
 
 extern u8 DeviceDescriptor[DEVICE_DESCRIPTOR_SIZE];
 extern u8 ConfigurationDescriptor[CONFIGURATION_DESCRIPTOR_SIZE];

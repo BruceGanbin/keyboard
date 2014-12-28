@@ -20,6 +20,20 @@ u16 Ep2SendLen=0;
 u8 Ep0ReadData[EP0_RD_LEN];
 u8 Get_DevRiptor_st;
 
+u8 NeedZeroPacket;
+
+
+void UsbReset(void)
+{
+    u8 reg;
+    reg = MODE_FG;
+    MODE_FG = reg & (~MODE_USBRST);
+    NeedZeroPacket = 0;
+    SendLen = 0;
+    
+}
+
+    
 /****************************************
 Tx FIFO length is 8 bytes
 TX Operating Model:
@@ -61,8 +75,11 @@ void Ep0SendData(void)
             }
             else
             {
-                TXCNT0 = 0;
-                TXFLG0 = reg_flg | 0x01;  // set Full = 1;
+                if(NeedZeroPacket==1)
+                {
+                    TXCNT0 = 0;
+                    TXFLG0 = reg_flg | 0x01;  // set Full = 1;
+                }
             }
         }
     }
@@ -219,7 +236,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
     descRiptr = (wValue >> 8) & 0xFF;
     switch(descRiptr)
     {
-    case DEVICE_DESCRIPTOR:
+    case DEVICE_DESCRIPTOR:   
 
         pSendData = DeviceDescriptor;
 
@@ -233,7 +250,8 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
             if(wLength > DeviceDescriptor[0])
             {
                 SendLen = DeviceDescriptor[0];
-                
+                if(SendLen % DeviceDescriptor[7] ==0)
+                    NeedZeroPacket == 1;
             }
             else
             {
@@ -241,7 +259,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
             }
         }
         UsbEp0SendData(pSendData,SendLen);
-        break;
+        break;£¬
         
     case CONFIGURATION_DESCRIPTOR:
 
@@ -249,17 +267,94 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
         SendLen = ConfigurationDescriptor[3]<<8;
         SendLen |= ConfigurationDescriptor[2];
 
+        if(wLength > SendLen)
+        {
+            if(SendLen % DeviceDescriptor[7] ==0)
+                NeedZeroPacket == 1;
+        }
+        else
+        {
+            SendLen = wLength;
+        }
         UsbEp0SendData(pSendData,SendLen);
         break;
         
     case STRING_DESCRIPTOR:
+        switch(wValue & 0xFF)
+        {
+        case 0:
+            pSendData = LanguageId;
+            SendLen = LanguageId[0];
+            break;
+        case 1:
+            pSendData = ManufacturerStringDescriptor;
+            SendLen = ManufacturerStringDescriptor[0];
+            break;
+        case 2:
+            pSendData = ProductStringDescriptor;
+            SendLen = ProductStringDescriptor[0];
+            break;
+        case 3:
+            pSendData = SerialNumberStringDescriptor;
+            SendLen = SerialNumberStringDescriptor[0];
+            break;
+        default:
+            SendLen = 0;
+            temp = 0;
+            pSendData = &temp;
+            NeedZeroPacket = 1;
+            break;
+        }    
+
+        if(wLength > SendLen)
+        {
+            if(SendLen % DeviceDescriptor[7] ==0)
+                NeedZeroPacket == 1;
+        }
+        else
+        {
+            SendLen = wLength;
+        }
+        UsbEp0SendData(pSendData,SendLen);
         break;
+        
     case INTERFACE_DESCRIPTOR:
         break;
     case ENDPOINT_DESCRIPTORE:
         break;
         //  HID Request
-        
+    case REPORT_DESCRIPTOR:
+        switch(wIndex)
+        {
+        case 0:
+            break;
+        case 1:
+            pSendData = KeyboardReportDescriptor;
+            SendLen = sizeof(KeyboardReportDescriptor);
+            break;
+        case 2:
+            pSendData = MouseReportDescriptor;
+            SendLen = sizeof(MouseReportDescriptor);
+            break;
+        default:
+            SendLen = 0;
+            temp = 0;
+            pSendData = &temp;
+            NeedZeroPacket = 1;
+            break;
+        }
+
+        if(wLength > SendLen)
+        {
+                if(SendLen % DeviceDescriptor[7] ==0)
+                    NeedZeroPacket == 1;
+        }
+        else
+        {
+            SendLen = wLength;
+        }
+        UsbEp0SendData(pSendData,SendLen);
+        break;
     default:
         break;
     }
@@ -323,6 +418,7 @@ void UsbSetup(void)
                     break;
                 case SET_ADDRESS:
                     usbaddress = wValue 0xEF;
+                    NeedZeroPacket = 1;
                     temp = 0 ;
                     UsbEp0SendData(&temp,0);
                     DADDR = usbaddress;
@@ -336,17 +432,27 @@ void UsbSetup(void)
                 case SET_INTERFACE:
                     break;
                 default:
+                    NeedZeroPacket = 1;
+                    temp = 0 ;
+                    UsbEp0SendData(&temp,0);
                     break;
                 }
             break;
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            break;
+        }
     }
-        
     // reset Ep0 Rx FIFO point 
     pEp0ReadData = Ep0ReadData;
     RXDAT0 = pEp0ReadData;
 }
 
 //
+/*
 void UsbHandler(void)
 {
     u8 usb_token;
@@ -369,13 +475,16 @@ void UsbHandler(void)
     }
     //	if(SUSPIF){SUSPIF = 0;UsbBusSuspend();}
 }
-
+*/
+ 
 void usbinit(void)
 {
     DFC = PULL_UP | USB_CON | USB_EN | VPCON | FW_K ;
     IE2 = IE_EIN0 | IE_EOUT0 | IE_ESIE ;
     IRQEN = IRQE_EIN1 | IRQE_EIN2 ;
+    
     Get_DevRiptor_st = 0;
+    NeedZeroPacket = 0;
 }
 
 
