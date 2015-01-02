@@ -11,7 +11,7 @@ unsigned char code kyb_map[8][17]={
     {KEY_Delete,0x00,0x00,KEY_ESCAPE,KEY_F1,KEY_F2,KEY_F3,KEY_F5,KEY_F6,KEY_F7,KEY_F9,KEY_F11,'+',0x00,'*'}
  };
 
-unsigned char Fn_map[12]={};
+unsigned char Fn_map[12]={0};
 //static unsigned char keynum_dat[2][8];
 static unsigned int  keynum_dat[8];
 

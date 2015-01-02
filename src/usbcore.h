@@ -1,7 +1,7 @@
 #ifndef __USBCORE_H
 #define __USBCORE_H
 #include <sh68F83.h>
-
+#include "main.h"
 
 // USB Feature Contorl
 #define PULL_UP                0x80// USB D- pad 1.5k ohm pull-up resisor
@@ -83,6 +83,7 @@ void UsbEp1In(void);
 void UsbEp2In(void);
 
 void usbinit(void);
+void usbreset(void);
 void UsbHandler(void);
 void UsbSetup(void);
 

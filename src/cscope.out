@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/play/keyboard/source/src               0000023924
+cscope 15 $HOME/Documents/play/keyboard/source/src               0000026472
 	@51_iic.c
 
 1 
@@ -291,7 +291,7 @@ KEY_F11
 
 14 
 	gFn_m≠
-[12]={};
+[12]={0};
 
 16 
 	gkeynum_d©
@@ -1767,61 +1767,69 @@ P3
 	~"usbc‹e.h
 "
 
-5 
+4 
+	~"maö.h
+"
+
+6 
 	gusbkeyd©
 [8];
 
-6 
+7 
 	gãmp
 =0;
 
-8 
+9 
+sy°em_öô
+();
+
+11 
 	$maö
 ()
 
-11 
+14 
 	`usböô
 ();
 
-14 
+17 
 	`ªadsˇn
 ();
 
-15 
+18 
 ãmp
  = 
 usbkeyd©
 [2];
 
-16 if(
+19 if(
 ãmp
 )
 
-17 
+20 
 usbkeyd©
 [0] = 0xFF;
 
-19 
+22 
 	}
 }
 
-21 
+24 
 	$IN0_öãºu±
 (Ë
 öãºu±
  10
 
-23 
+26 
 u8
  
 ªg
  = 0;
 
-24 
+27 
 	`UsbEp0In
 ();
 
-25 
+28 
 ªg
  = 
 IF2
@@ -1829,33 +1837,33 @@ IF2
 IF_IN0
 );
 
-26 
+29 
 IF2
  = 
 ªg
 ;
 
-27 
+30 
 	}
 }
 
-29 
+32 
 	$OUT0_öãºu±
 (Ë
 öãºu±
  11
 
-31 
+34 
 u8
  
 ªg
  = 0;
 
-32 
+35 
 	`UsbEp0Out
 ();
 
-33 
+36 
 ªg
  = 
 IF2
@@ -1863,33 +1871,33 @@ IF2
 IF_OUT0
 );
 
-34 
+37 
 IF2
  = 
 ªg
 ;
 
-35 
+38 
 	}
 }
 
-37 
+40 
 	$SIE_öãºu±
 (Ë
 öãºu±
  12
 
-39 
+42 
 u8
  
 ªg
  = 0;
 
-40 
+43 
 	`UsbH™dÀr
 ();
 
-41 
+44 
 ªg
  = 
 IF2
@@ -1897,33 +1905,33 @@ IF2
 IF_SIE
 );
 
-42 
+45 
 IF2
  = 
 ªg
 ;
 
-43 
+46 
 	}
 }
 
-45 
+48 
 	$SETUP_öãºu±
 (Ë
 öãºu±
  8
 
-47 
+50 
 u8
  
 ªg
  = 0;
 
-48 
+51 
 	`UsbSëup
 ();
 
-49 
+52 
 ªg
  = 
 IF2
@@ -1931,15 +1939,59 @@ IF2
 IF_STUP
 );
 
-50 
+53 
 IF2
  = 
 ªg
 ;
 
-51 
+54 
 	}
 }
+
+57 
+	$sy°em_öô
+()
+
+60 
+	}
+}
+
+	@main.h
+
+1 #i‚de‡
+__MAIN_H
+
+
+2 
+	#__MAIN_H
+
+
+	)
+
+4 
+	tu8
+;
+
+5 
+	tu16
+;
+
+6 
+	tu32
+;
+
+8 
+	tuöt8
+;
+
+9 
+	tuöt16
+;
+
+10 
+	tuöt32
+;
 
 	@usb_hid.c
 
@@ -1953,15 +2005,19 @@ u8
 code
  
 	gDevi˚Des¸ùt‹
-[0x12]=
+[
+DEVICE_DESCRIPTOR_SIZE
+]=
 
 25 
-U8
+u8
  
 code
  
 	gC⁄figuøti⁄Des¸ùt‹
-[9+9+9+7]=
+[
+CONFIGURATION_DESCRIPTOR_SIZE
+]=
 
 30 (
 C⁄figuøti⁄Des¸ùt‹
@@ -1989,49 +2045,77 @@ code
 JOYSTICK_SIZ_CONFIG_DESC
 ] =
 
-74 
-USB_CONFIGURATION_DESCRIPTOR_TYPE
-,
-
-76 
+77 
 JOYSTICK_SIZ_CONFIG_DESC
 ,
 
-108 (
+109 (
 KeybﬂrdRï‹tDes¸ùt‹
 )&0xFF,
 
-109 ((
+110 ((
 KeybﬂrdRï‹tDes¸ùt‹
 )>>8)&0xFF,
 
-148 (
+149 (
 Mou£Rï‹tDes¸ùt‹
 )&0xFF,
 
-149 ((
+150 ((
 Mou£Rï‹tDes¸ùt‹
 )>>8)&0xFF,
 
-161 
+162 
 u8
  
 code
  
 	gKeybﬂrdRï‹tDes¸ùt‹
 [
-KP_Rï‹tDes¸ùt‹_Size
+KBD_REPORTDESCRIPTOR_SIZE
 ]=
 
-199 
+200 
 u8
  
 code
  
 	gMou£Rï‹tDes¸ùt‹
 [
-Mou£_Rï‹tDes¸ùt‹_Size
+MOUSE_REPORTDESCRIPTS_SIZE
 ]=
+
+232 
+u8
+ 
+code
+ 
+	gL™guageId
+[1]=
+
+237 
+u8
+ 
+code
+ 
+	gM™uÁ˘uªrSåögDes¸ùt‹
+[1]=
+
+242 
+u8
+ 
+code
+ 
+	gProdu˘SåögDes¸ùt‹
+[1]=
+
+247 
+u8
+ 
+code
+ 
+	gSîülNumbîSåögDes¸ùt‹
+[1]=
 
 	@usb_hid.h
 
@@ -2049,76 +2133,162 @@ __USB_HID_H
 	~<sh68F83.h
 >
 
-5 
+4 
+	~"maö.h
+"
+
+6 
+	#DEVICE_DESCRIPTOR_SIZE
+ 18
+
+	)
+
+7 
+	#CONFIGURATION_DESCRIPTOR_SIZE
+ 34
+
+	)
+
+8 
 	#JOYSTICK_SIZ_CONFIG_DESC
  66
 
 	)
 
-6 
+9 
 	#KBD_REPORTDESCRIPTOR_SIZE
  63
 
 	)
 
-7 
+10 
 	#MOUSE_REPORTDESCRIPTS_SIZE
  54
 
 	)
 
-8 
+11 
 	#KBD_OFF_HID_DESC
  18
 
 	)
 
-9 
+12 
 	#Mou£_OFF_HID_DESC
  50
 
 	)
 
-11 
+13 
+	#LANGUAGE_ID_SIZE
+ 4
+
+	)
+
+14 
+	#MANUFACTUREER_SIZE
+ 20
+
+	)
+
+15 
+	#PRODUCT_SIZE
+ 20
+
+	)
+
+16 
+	#SERIAL_NUM_SIZE
+ 20
+
+	)
+
+20 
 u8
+ 
+code
  
 Devi˚Des¸ùt‹
-[];
+[
+DEVICE_DESCRIPTOR_SIZE
+];
 
-12 
+21 
 u8
  
+code
+ 
 C⁄figuøti⁄Des¸ùt‹
-[];
+[
+CONFIGURATION_DESCRIPTOR_SIZE
+];
 
-13 
+22 
 u8
+ 
+code
  
 Joy°ick_C⁄figDes¸ùt‹
 [
 JOYSTICK_SIZ_CONFIG_DESC
 ];
 
-14 
+23 
 u8
+ 
+code
  
 KeybﬂrdRï‹tDes¸ùt‹
 [
 KBD_REPORTDESCRIPTOR_SIZE
 ];
 
-15 
+24 
 u8
+ 
+code
  
 Mou£Rï‹tDes¸ùt‹
 [
 MOUSE_REPORTDESCRIPTS_SIZE
 ];
 
+26 
+u8
+ 
+code
+ 
+L™guageId
+[1];
+
+27 
+u8
+ 
+code
+ 
+M™uÁ˘uªrSåögDes¸ùt‹
+[1];
+
+28 
+u8
+ 
+code
+ 
+Produ˘SåögDes¸ùt‹
+[1];
+
+29 
+u8
+ 
+code
+ 
+SîülNumbîSåögDes¸ùt‹
+[1];
+
 	@usbcore.c
 
 1 
-	~"HID.h
+	~"usb_hid.h
 "
 
 2 
@@ -2126,8 +2296,8 @@ MOUSE_REPORTDESCRIPTS_SIZE
 "
 
 3 
-	~"c51ty≥.h
-"
+	~<SH68F83.H
+>
 
 4 
 	~<öåös.h
@@ -2194,19 +2364,19 @@ u8
 =0;
 
 17 
-u8
+u16
  
 	gEp0SídLí
 =0;
 
 18 
-u8
+u16
  
 	gEp1SídLí
 =0;
 
 19 
-u8
+u16
  
 	gEp2SídLí
 =0;
@@ -2222,384 +2392,446 @@ EP0_RD_LEN
 21 
 u8
  
+	gEp0SídD©a
+[
+EP0_RD_LEN
+];
+
+22 
+u8
+ 
 	gGë_DevRùt‹_°
 ;
 
-32 
+24 
+u8
+ 
+	gNìdZîoPackë
+;
+
+27 
+	$UsbRe£t
+()
+
+29 
+u8
+ 
+ªg
+;
+
+30 
+ªg
+ = 
+MODE_FG
+;
+
+31 
+MODE_FG
+ = 
+ªg
+ & (~
+MODE_USBRST
+);
+
+32 
+NìdZîoPackë
+ = 0;
+
+33 
+Ep0SídLí
+ = 0;
+
+34 
+Ep1SídLí
+ = 0;
+
+35 
+Ep2SídLí
+ = 0;
+
+36 
+	}
+}
+
+48 
 	$Ep0SídD©a
 ()
 
-34 
+50 
 u8
  
 T0_FULL
 ;
 
-35 
+51 
 u8
  
 ªg_Êg
 ;
 
-37 
+53 
 ªg_Êg
  = 
 TXFLG0
  ;
 
-38 
+54 
 T0_FULL
  = 
 ªg_Êg
  & 0x01;
 
-39 if(!
+55 if(!
 T0_FULL
 )
 
-41 if(
+57 if(
 Ep0SídLí
  > 
 Devi˚Des¸ùt‹
 [7])
 
-44 
+61 
 TXDAT0
  = 
-pEp0SídD©a
+Ep0SídD©a
 ;
 
-45 
+62 
 TXCNT0
  = 
 Devi˚Des¸ùt‹
 [7];
 
-46 
+63 
 TXFLG0
  = 
 ªg_Êg
  | 0x01;
 
-48 
+65 
 Ep0SídLí
  -
 Devi˚Des¸ùt‹
 [7];
 
-49 
+66 
 pEp0SídD©a
  +
 Devi˚Des¸ùt‹
 [7];
 
-53 if(
+70 if(
 Ep0SídLí
  != 0)
 
-56 
+73 
 TXDAT0
  = 
 pEp0SídD©a
 ;
 
-57 
-TXCNT0
- = 
-Ep0SídLí
-;
-
-58 
-TXFLG0
- = 
-ªg_Êg
- | 0x01;
-
-60 
-Ep0SídLí
- = 0;
-
-64 
-TXCNT0
- = 0;
-
-65 
-TXFLG0
- = 
-ªg_Êg
- | 0x01;
-
-69 
-	}
-}
-
-72 
-	$Ep1SídD©a
-()
-
 74 
-u8
- 
-T1_FULL
+TXCNT0
+ = 
+Ep0SídLí
 ;
 
 75 
-u8
- 
-ªg_Êg
-;
-
-77 
-ªg_Êg
- = 
-TXFLG1
-;
-
-78 
-T1_FULL
- = 
-ªg_Êg
- & 0x01;
-
-79 if(!
-T1_FULL
-)
-
-81 if(
-Ep1SídLí
- > 
-Devi˚Des¸ùt‹
-[7])
-
-84 
-TXDAT1
- = 
-pEp1SídD©a
-;
-
-85 
-TXCNT1
- = 
-Devi˚Des¸ùt‹
-[7];
-
-86 
-TXFLG1
+TXFLG0
  = 
 ªg_Êg
  | 0x01;
 
-88 
-Ep1SídLí
- -
-Devi˚Des¸ùt‹
-[7];
+77 
+Ep0SídLí
+ = 0;
+
+81 if(
+NìdZîoPackë
+==1)
+
+83 
+TXCNT0
+ = 0;
+
+84 
+TXFLG0
+ = 
+ªg_Êg
+ | 0x01;
 
 89 
-pEp1SídD©a
- +
-Devi˚Des¸ùt‹
-[7];
+	}
+}
 
-93 if(
-Ep1SídLí
- != 0)
+92 
+	$Ep1SídD©a
+()
 
-96 
-TXDAT1
- = 
-pEp1SídD©a
+94 
+u8
+ 
+T1_FULL
+;
+
+95 
+u8
+ 
+ªg_Êg
 ;
 
 97 
+ªg_Êg
+ = 
+TXFLG1
+;
+
+98 
+T1_FULL
+ = 
+ªg_Êg
+ & 0x01;
+
+99 if(!
+T1_FULL
+)
+
+101 if(
+Ep1SídLí
+ > 
+Devi˚Des¸ùt‹
+[7])
+
+104 
+TXDAT1
+ = 
+pEp1SídD©a
+;
+
+105 
+TXCNT1
+ = 
+Devi˚Des¸ùt‹
+[7];
+
+106 
+TXFLG1
+ = 
+ªg_Êg
+ | 0x01;
+
+108 
+Ep1SídLí
+ -
+Devi˚Des¸ùt‹
+[7];
+
+109 
+pEp1SídD©a
+ +
+Devi˚Des¸ùt‹
+[7];
+
+113 if(
+Ep1SídLí
+ != 0)
+
+116 
+TXDAT1
+ = 
+pEp1SídD©a
+;
+
+117 
 TXCNT1
  = 
 Ep1SídLí
 ;
 
-98 
+118 
 TXFLG1
  = 
 ªg_Êg
  | 0x01;
 
-100 
+120 
 Ep1SídLí
  = 0;
 
-104 
+124 
 TXCNT1
  = 0;
 
-105 
+125 
 TXFLG1
  = 
 ªg_Êg
  | 0x01;
 
-109 
+129 
 	}
 }
 
-111 
+131 
 	$Ep2SídD©a
 ()
 
-113 
+133 
 u8
  
 T2_FULL
 ;
 
-114 
+134 
 u8
  
 ªg_Êg
 ;
 
-116 
+136 
 ªg_Êg
  = 
 TXFLG2
 ;
 
-117 
+137 
 T2_FULL
  = 
 ªg_Êg
  & 0x01;
 
-118 if(!
+138 if(!
 T2_FULL
 )
 
-120 if(
+140 if(
 Ep2SídLí
  > 
 Devi˚Des¸ùt‹
 [7])
 
-123 
+143 
 TXDAT2
  = 
 pEp2SídD©a
 ;
 
-124 
+144 
 TXCNT2
  = 
 Devi˚Des¸ùt‹
 [7];
 
-125 
+145 
 TXFLG2
  = 
 ªg_Êg
  | 0x01;
 
-127 
+147 
 Ep2SídLí
  -
 Devi˚Des¸ùt‹
 [7];
 
-128 
+148 
 pEp2SídD©a
  +
 Devi˚Des¸ùt‹
 [7];
 
-132 if(
+152 if(
 Ep2SídLí
  != 0)
 
-135 
+155 
 TXDAT2
  = 
 pEp2SídD©a
 ;
 
-136 
+156 
 TXCNT2
  = 
 Ep2SídLí
 ;
 
-137 
+157 
 TXFLG2
  = 
 ªg_Êg
  | 0x01;
 
-139 
+159 
 Ep2SídLí
  = 0;
 
-143 
+163 
 TXCNT2
  = 0;
 
-144 
+164 
 TXFLG2
  = 
 ªg_Êg
  | 0x01;
 
-148 
+168 
 	}
 }
 
-150 
+170 
 	$UsbEp0Re˚iveD©a
 ()
 
-152 
+172 
 u8
  
 T0_FULL
 ;
 
-153 
+173 
 u8
  
 ªg_Êg
 ;
 
-154 
+174 
 u8
  
 i
  = 0;
 
-155 
+175 
 ªg_Êg
  = 
 RXFLG0
  ;
 
-156 
+176 
 T0_FULL
  = 
 ªg_Êg
  & 0x01;
 
-157 if(
+177 if(
 T0_FULL
 )
 
-159 
+179 
 Ep0_rx˙t
  = 
 RXCNT0
 ;
 
-161 
+181 
 pEp0RódD©a
  +
 Ep0_rx˙t
 ;
 
-162 if((
+182 if((
 pEp0RódD©a
  - 
 Ep0RódD©a
@@ -2607,167 +2839,173 @@ Ep0RódD©a
 EP0_RD_LEN
 )
 
-164 
+184 
 pEp0RódD©a
  = 
 Ep0RódD©a
 ;
 
-166 
+186 
 RXDAT0
  = 
 pEp0RódD©a
 ;
 
-167 
+187 
 TXFLG0
  = 
 ªg_Êg
  & 0xFE;
 
-169 
+189 
 	}
 }
 
-171 
+191 
 	$UsbEp0SídD©a
 (
 u8
  *
 pSídD©a
-,u8 
+,
+u16
+ 
 Àn
 )
 
-173 
+193 
 pEp0SídD©a
  = 
 pSídD©a
 ;
 
-174 
+194 
 Ep0SídLí
  = 
 Àn
 ;
 
-175 
-	`Ep0SídD©a
-();
-
-176 
-	}
-}
-
-178 
-	$UsbEp1SídD©a
-(
-u8
- *
-pSídD©a
-,u8 
-Àn
-)
-
-180 
-pEp1SídD©a
- = 
-pSídD©a
-;
-
-181 
-Ep1SídLí
- = 
-Àn
-;
-
-182 
-	`Ep1SídD©a
-();
-
-183 
-	}
-}
-
-185 
-	$UsbEp2SídD©a
-(
-u8
- *
-pSídD©a
-,u8 
-Àn
-)
-
-187 
-pEp2SídD©a
- = 
-pSídD©a
-;
-
-188 
-Ep2SídLí
- = 
-Àn
-;
-
-189 
-	`Ep2SídD©a
-();
-
-190 
-	}
-}
-
-193 
-	$Usbï0out
-()
-
 195 
-	`UsbEp0Re˚iveD©a
+	`Ep0SídD©a
 ();
 
 196 
 	}
 }
 
-198 
-	$UsbEp0In
-()
+198 
+	$UsbEp1SídD©a
+(
+u8
+ *
+pSídD©a
+,
+u16
+ 
+Àn
+)
 
 200 
-	`Ep0SídD©a
-();
+pEp1SídD©a
+ = 
+pSídD©a
+;
 
 201 
-	}
-}
+Ep1SídLí
+ = 
+Àn
+;
 
-203 
-	$UsbEp1In
-()
-
-205 
+202 
 	`Ep1SídD©a
 ();
 
-206 
+203 
 	}
 }
 
-208 
-	$UsbEp2In
-()
+205 
+	$UsbEp2SídD©a
+(
+u8
+ *
+pSídD©a
+,
+u16
+ 
+Àn
+)
 
-210 
+207 
+pEp2SídD©a
+ = 
+pSídD©a
+;
+
+208 
+Ep2SídLí
+ = 
+Àn
+;
+
+209 
 	`Ep2SídD©a
 ();
 
-211 
+210 
 	}
 }
 
-213 
+213 
+	$Usbï0out
+()
+
+215 
+	`UsbEp0Re˚iveD©a
+();
+
+216 
+	}
+}
+
+218 
+	$UsbEp0In
+()
+
+220 
+	`Ep0SídD©a
+();
+
+221 
+	}
+}
+
+223 
+	$UsbEp1In
+()
+
+225 
+	`Ep1SídD©a
+();
+
+226 
+	}
+}
+
+228 
+	$UsbEp2In
+()
+
+230 
+	`Ep2SídD©a
+();
+
+231 
+	}
+}
+
+233 
 	$usbgë_des¸ùt‹
 (
 u16
@@ -2779,75 +3017,85 @@ wIndex
 wLígth
 )
 
-215 
+235 
 u8
  
 descRùå
 ;
 
-216 
-u8
+236 
+u16
  
 SídLí
-;
+ = 0;
 
-217 
+237 
 u8
  
 pSídD©a
 ;
 
-219 
+239 
 descRùå
  = (
 wVÆue
  >> 8) & 0xFF;
 
-220 
+240 
 descRùå
 )
 
-222 
+242 
 DEVICE_DESCRIPTOR
 :
 
-224 
+244 
 pSídD©a
  = 
 Devi˚Des¸ùt‹
 ;
 
-226 if(
+246 if(
 Gë_DevRùt‹_°
  == 0)
 
-228 
+248 
 Gë_DevRùt‹_°
  = 1;
 
-229 
+249 
 SídLí
  = 8;
 
-233 if(
+253 if(
 wLígth
  > 
 Devi˚Des¸ùt‹
 [0])
 
-235 
+255 
 SídLí
  = 
 Devi˚Des¸ùt‹
 [0];
 
-240 
+256 if(
+SídLí
+ % 
+Devi˚Des¸ùt‹
+[7] ==0)
+
+257 
+NìdZîoPackë
+ == 1;
+
+261 
 SídLí
  = 
 wLígth
 ;
 
-243 
+264 
 	`UsbEp0SídD©a
 (
 pSídD©a
@@ -2855,91 +3103,313 @@ pSídD©a
 SídLí
 );
 
-246 
+267 
 CONFIGURATION_DESCRIPTOR
 :
 
-248 
+269 
 pSídD©a
  = 
 C⁄figuøti⁄Des¸ùt‹
 ;
 
-251 
+270 
+SídLí
+ = 
+C⁄figuøti⁄Des¸ùt‹
+[3]<<8;
+
+271 
+SídLí
+ |
+C⁄figuøti⁄Des¸ùt‹
+[2];
+
+273 if(
+wLígth
+ > 
+SídLí
+)
+
+275 if(
+SídLí
+ % 
+Devi˚Des¸ùt‹
+[7] ==0)
+
+276 
+NìdZîoPackë
+ == 1;
+
+280 
+SídLí
+ = 
+wLígth
+;
+
+282 
+	`UsbEp0SídD©a
+(
+pSídD©a
+,
+SídLí
+);
+
+285 
 STRING_DESCRIPTOR
 :
 
-253 
+286 
+wVÆue
+ & 0xFF)
+
+289 
+pSídD©a
+ = 
+L™guageId
+;
+
+290 
+SídLí
+ = 
+L™guageId
+[0];
+
+293 
+pSídD©a
+ = 
+M™uÁ˘uªrSåögDes¸ùt‹
+;
+
+294 
+SídLí
+ = 
+M™uÁ˘uªrSåögDes¸ùt‹
+[0];
+
+297 
+pSídD©a
+ = 
+Produ˘SåögDes¸ùt‹
+;
+
+298 
+SídLí
+ = 
+Produ˘SåögDes¸ùt‹
+[0];
+
+301 
+pSídD©a
+ = 
+SîülNumbîSåögDes¸ùt‹
+;
+
+302 
+SídLí
+ = 
+SîülNumbîSåögDes¸ùt‹
+[0];
+
+305 
+SídLí
+ = 0;
+
+306 
+ãmp
+ = 0;
+
+307 
+pSídD©a
+ = &
+ãmp
+;
+
+308 
+NìdZîoPackë
+ = 1;
+
+312 if(
+wLígth
+ > 
+SídLí
+)
+
+314 if(
+SídLí
+ % 
+Devi˚Des¸ùt‹
+[7] ==0)
+
+315 
+NìdZîoPackë
+ == 1;
+
+319 
+SídLí
+ = 
+wLígth
+;
+
+321 
+	`UsbEp0SídD©a
+(
+pSídD©a
+,
+SídLí
+);
+
+324 
 INTERFACE_DESCRIPTOR
 :
 
-255 
+326 
 ENDPOINT_DESCRIPTORE
 :
 
-261 
+329 
+REPORT_DESCRIPTOR
+:
+
+330 
+wIndex
+)
+
+335 
+pSídD©a
+ = 
+KeybﬂrdRï‹tDes¸ùt‹
+;
+
+336 
+SídLí
+ = (
+KeybﬂrdRï‹tDes¸ùt‹
+);
+
+339 
+pSídD©a
+ = 
+Mou£Rï‹tDes¸ùt‹
+;
+
+340 
+SídLí
+ = (
+Mou£Rï‹tDes¸ùt‹
+);
+
+343 
+SídLí
+ = 0;
+
+344 
+ãmp
+ = 0;
+
+345 
+pSídD©a
+ = &
+ãmp
+;
+
+346 
+NìdZîoPackë
+ = 1;
+
+350 if(
+wLígth
+ > 
+SídLí
+)
+
+352 if(
+SídLí
+ % 
+Devi˚Des¸ùt‹
+[7] ==0)
+
+353 
+NìdZîoPackë
+ == 1;
+
+357 
+SídLí
+ = 
+wLígth
+;
+
+359 
+	`UsbEp0SídD©a
+(
+pSídD©a
+,
+SídLí
+);
+
+364 
 	}
 }
 
-264 
+367 
 	$UsbSëup
 ()
 
-266 
+369 
 u8
  
 usbaddªss
  = 0;
 
-267 
+370 
 u8
  
 ãmp
  = 0;
 
-268 
+371 
 u8
  
 bmReque°Ty≥
 ;
 
-269 
+372 
 u8
  
 bReque°
 ;
 
-270 
+373 
 u16
  
 wVÆue
 ;
 
-271 
+374 
 u16
  
 wIndex
 ;
 
-272 
+375 
 u16
  
 wLígth
 ;
 
-274 
+377 
 bmReque°Ty≥
  = 
 Ep0RódD©a
 [0];
 
-275 
+378 
 bReque°
  = 
 Ep0RódD©a
 [1];
 
-276 
+379 
 wVÆue
  = 
 Ep0RódD©a
@@ -2947,7 +3417,7 @@ Ep0RódD©a
 u16
 )Ep0ReadData[3])<<8);
 
-277 
+380 
 wIndex
  = 
 Ep0RódD©a
@@ -2955,7 +3425,7 @@ Ep0RódD©a
 u16
 )Ep0ReadData[5])<<8);
 
-278 
+381 
 wLígth
  = 
 Ep0RódD©a
@@ -2963,27 +3433,27 @@ Ep0RódD©a
 u16
 )Ep0ReadData[7])<<8);
 
-280 if((
+383 if((
 bmReque°Ty≥
  & 0x80) == 0x80)
 
-282 (
+385 (
 bmReque°Ty≥
 >>5)&0x03)
 
-285 
+388 
 bReque°
 )
 
-287 
+390 
 GET_CONFIGURATION
 :
 
-290 
+393 
 GET_DESCRIPTOR
 :
 
-291 
+394 
 	`usbgë_des¸ùt‹
 (
 wVÆue
@@ -2993,155 +3463,111 @@ wIndex
 wLígth
 );
 
-294 
+397 
 GET_INTERFACE
 :
 
-296 
+399 
 GET_STATUS
 :
 
-298 
+401 
 SYNCH_FRAME
 :
 
-312 (
+415 (
 bmReque°Ty≥
 >>5)&0x03)
 
-315 
+418 
 bReque°
 )
 
-317 
+420 
 CLEAR_FEATURE
 :
 
-319 
+422 
 SET_ADDRESS
 :
 
-320 
+423 
 usbaddªss
  = 
 wVÆue
  0xEF;
 
-321 
+424 
+NìdZîoPackë
+ = 1;
+
+425 
 ãmp
  = 0 ;
 
-322 
+426 
 	`UsbEp0SídD©a
 (&
 ãmp
 ,0);
 
-323 
+427 
 DADDR
  = 
 usbaddªss
 ;
 
-325 
+429 
 SET_CONFIGURATION
 :
 
-327 
+431 
 SET_DESCRIPTOR
 :
 
-329 
+433 
 SET_FEATURE
 :
 
-331 
+435 
 SET_INTERFACE
 :
 
-340 
+438 
+NìdZîoPackë
+ = 1;
+
+439 
+ãmp
+ = 0 ;
+
+440 
+	`UsbEp0SídD©a
+(&
+ãmp
+,0);
+
+453 
 pEp0RódD©a
  = 
 Ep0RódD©a
 ;
 
-341 
+454 
 RXDAT0
  = 
 pEp0RódD©a
 ;
 
-345 
-	`UsbH™dÀr
+455 
+	}
+}
+
+483 
+	$usböô
 ()
 
-347 
-u8
- 
-usb_tokí
-;
-
-349 
-usb_tokí
- = 
-IRQFG
-;
-
-350 if(
-USBRSTIF
-){USBRSTIF = 0;
-	`UsbBusRe£t
-();}
-
-353 if(
-usb_tokí
- & 
-IRQF_IN1
-)
-
-355 
-	`UsbEp1In
-();
-
-356 
-usb_tokí
- &(~
-IRQF_IN1
-);
-
-357 
-IRQFG
- = 
-usb_tokí
-;
-
-359 if(
-usb_tokí
- & 
-IRQF_IN2
-)
-
-361 
-	`UsbEp2In
-();
-
-362 
-usb_tokí
- &(~
-IRQF_IN2
-);
-
-363 
-IRQFG
- = 
-usb_tokí
-;
-
-368 
-	`usböô
-()
-
-370 
+485 
 DFC
  = 
 PULL_UP
@@ -3155,7 +3581,7 @@ VPCON
 FW_K
  ;
 
-371 
+486 
 IE2
  = 
 IE_EIN0
@@ -3165,7 +3591,7 @@ IE_EOUT0
 IE_ESIE
  ;
 
-372 
+487 
 IRQEN
  = 
 IRQE_EIN1
@@ -3173,9 +3599,17 @@ IRQE_EIN1
 IRQE_EIN2
  ;
 
-373 
+489 
 Gë_DevRùt‹_°
  = 0;
+
+490 
+NìdZîoPackë
+ = 0;
+
+491 
+	}
+}
 
 	@usbcore.h
 
@@ -3192,6 +3626,10 @@ __USBCORE_H
 3 
 	~<sh68F83.h
 >
+
+4 
+	~"maö.h
+"
 
 7 
 	#PULL_UP
@@ -3401,139 +3839,187 @@ __USBCORE_H
 
 	)
 
+49 
+	#MODE_SUSF
+ 0x01
+
+	)
+
+50 
+	#MODE_POF
+ 0x02
+
+	)
+
 51 
+	#MODE_USBRST
+ 0x04
+
+	)
+
+52 
+	#MODE_WDT
+ 0x08
+
+	)
+
+53 
+	#MODE_TRGRST
+ 0x10
+
+	)
+
+54 
+	#MODE_WKUP
+ 0x20
+
+	)
+
+55 
+	#MODE_N⁄idÀ
+ 0x40
+
+	)
+
+58 
 	#GET_STATUS
  0
 
 	)
 
-52 
+59 
 	#CLEAR_FEATURE
  1
 
 	)
 
-53 
+60 
 	#SET_FEATURE
  3
 
 	)
 
-54 
+61 
 	#SET_ADDRESS
  5
 
 	)
 
-55 
+62 
 	#GET_DESCRIPTOR
  6
 
 	)
 
-56 
+63 
 	#SET_DESCRIPTOR
  7
 
 	)
 
-57 
+64 
 	#GET_CONFIGURATION
  8
 
 	)
 
-58 
+65 
 	#SET_CONFIGURATION
  9
 
 	)
 
-59 
+66 
 	#GET_INTERFACE
  10
 
 	)
 
-60 
+67 
 	#SET_INTERFACE
  11
 
 	)
 
-61 
+68 
 	#SYNCH_FRAME
  12
 
 	)
 
-63 
+70 
 	#DEVICE_DESCRIPTOR
  1
 
 	)
 
-64 
+71 
 	#CONFIGURATION_DESCRIPTOR
  2
 
 	)
 
-65 
+72 
 	#STRING_DESCRIPTOR
  3
 
 	)
 
-66 
+73 
 	#INTERFACE_DESCRIPTOR
  4
 
 	)
 
-67 
+74 
 	#ENDPOINT_DESCRIPTOR
  5
 
 	)
 
-69 
+75 
+	#REPORT_DESCRIPTOR
+ 0x22
+
+	)
+
+77 
 	#USB_BUF_LEN
  8
 
 	)
 
-70 
+78 
 	#EP0_RD_LEN
  18
 
 	)
 
-72 
+80 
 UsbEp0Out
 ();
 
-73 
+81 
 UsbEp0In
 ();
 
-74 
+82 
 UsbEp1In
 ();
 
-75 
+83 
 UsbEp2In
 ();
 
-77 
+85 
 usböô
 ();
 
-78 
+86 
 UsbH™dÀr
 ();
 
-79 
+87 
 UsbSëup
 ();
 
@@ -4633,13 +5119,14 @@ P3
 1
 .
 0
-10
-98
+11
+105
 51_iic.c
 51_iic.h
 Keyboard.c
 Keyboard.h
 MAIN.c
+main.h
 usb_hid.c
 usb_hid.h
 usbcore.c

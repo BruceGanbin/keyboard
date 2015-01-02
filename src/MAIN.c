@@ -1,6 +1,7 @@
 #include <sh68f83.h>
 #include "keyboard.h"
 #include "usbcore.h"
+#include "main.h"
 
 unsigned char usbkeydat[8];
 unsigned char temp=0;
@@ -9,7 +10,7 @@ void system_init(void);
 
 void main(void)
 {
-
+    system_init();
     usbinit();
     while(1)
     {
@@ -52,8 +53,29 @@ void SETUP_interrupt(void) interrupt 8 // or 9
     IF2 = reg;
 }
 
+void clear_wdt(void)
+{
+    CLRWDT = 0x55;
+}
+
+void power_init(void)
+{
+    SUSLO = 0x00;
+    PCON = 0x00;  
+}
+
+void set_idlemode(void)
+{
+    SUSLO = 0x55;
+    PCON = 0x02;
+}
 
 void system_init(void)
 {
+    u8 i,j;
 
+    power_init();
+    usbreset();
+    
+    // PREWDT = 0x03;  //set watch dot timer
 }

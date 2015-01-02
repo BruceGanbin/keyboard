@@ -1,6 +1,6 @@
-#include "HID.h"
+#include "usb_hid.h"
 #include "usbcore.h"
-#include "c51type.h"
+#include <SH68F83.H>
 #include <intrins.h>
 
 u8	bmRequestType;
@@ -18,20 +18,12 @@ u16 Ep0SendLen=0;
 u16 Ep1SendLen=0;
 u16 Ep2SendLen=0;
 u8 Ep0ReadData[EP0_RD_LEN];
+u8 Ep0SendFIFO[EP0_RD_LEN];
 u8 Get_DevRiptor_st;
 
 u8 NeedZeroPacket;
 
 
-void UsbReset(void)
-{
-    u8 reg;
-    reg = MODE_FG;
-    MODE_FG = reg & (~MODE_USBRST);
-    NeedZeroPacket = 0;
-    SendLen = 0;
-    
-}
 
     
 /****************************************
@@ -47,15 +39,18 @@ void Ep0SendData(void)
 {    
     u8 T0_FULL;
     u8 reg_flg;
+    u8 *pData;
     
     reg_flg = TXFLG0 ;
     T0_FULL = reg_flg & 0x01;
+    *pData = Ep0SendFIFO;
     if(!T0_FULL)
     {
         if(Ep0SendLen > DeviceDescriptor[7])
         {
             // send data
-            TXDAT0 = pEp0SendData;
+            TXDAT0 = pData;
+            //            TXDAT0 = Ep0SendFIFO;
             TXCNT0 = DeviceDescriptor[7];
             TXFLG0 = reg_flg | 0x01;  // set Full = 1;
                 
@@ -185,21 +180,21 @@ static void UsbEp0ReceiveData(void)
     }
 }
 
-static void UsbEp0SendData(u8 *pSendData,u16 len)
+void UsbEp0SendData(u8 *pSendData,u16 len)
 {
     pEp0SendData = pSendData;
     Ep0SendLen = len;
     Ep0SendData();
 }
 
-static void UsbEp1SendData(u8 *pSendData,u16 len)
+void UsbEp1SendData(u8 *pSendData,u16 len)
 {
     pEp1SendData = pSendData;
     Ep1SendLen = len;
     Ep1SendData();
 }
 
-static void UsbEp2SendData(u8 *pSendData,u16 len)
+void UsbEp2SendData(u8 *pSendData,u16 len)
 {
     pEp2SendData = pSendData;
     Ep2SendLen = len;
@@ -231,7 +226,8 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
 {
     u8 descRiptr;
     u16 SendLen = 0;
-    u8 pSendData;
+    u8 *pSendData;
+    u8 temp;
 
     descRiptr = (wValue >> 8) & 0xFF;
     switch(descRiptr)
@@ -251,7 +247,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
             {
                 SendLen = DeviceDescriptor[0];
                 if(SendLen % DeviceDescriptor[7] ==0)
-                    NeedZeroPacket == 1;
+                    NeedZeroPacket = 1;
             }
             else
             {
@@ -259,7 +255,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
             }
         }
         UsbEp0SendData(pSendData,SendLen);
-        break;£¬
+        break;
         
     case CONFIGURATION_DESCRIPTOR:
 
@@ -270,7 +266,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
         if(wLength > SendLen)
         {
             if(SendLen % DeviceDescriptor[7] ==0)
-                NeedZeroPacket == 1;
+                NeedZeroPacket = 1;
         }
         else
         {
@@ -309,7 +305,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
         if(wLength > SendLen)
         {
             if(SendLen % DeviceDescriptor[7] ==0)
-                NeedZeroPacket == 1;
+                NeedZeroPacket = 1;
         }
         else
         {
@@ -320,8 +316,8 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
         
     case INTERFACE_DESCRIPTOR:
         break;
-    case ENDPOINT_DESCRIPTORE:
-        break;
+//    case ENDPOINT_DESCRIPTORE:
+//        break;
         //  HID Request
     case REPORT_DESCRIPTOR:
         switch(wIndex)
@@ -347,7 +343,7 @@ static void usbget_descriptor(u16 wValue,u16 wIndex,u16 wLength)
         if(wLength > SendLen)
         {
                 if(SendLen % DeviceDescriptor[7] ==0)
-                    NeedZeroPacket == 1;
+                    NeedZeroPacket = 1;
         }
         else
         {
@@ -417,7 +413,7 @@ void UsbSetup(void)
                 case CLEAR_FEATURE:
                     break;
                 case SET_ADDRESS:
-                    usbaddress = wValue 0xEF;
+                    usbaddress = (wValue & 0xFF);
                     NeedZeroPacket = 1;
                     temp = 0 ;
                     UsbEp0SendData(&temp,0);
@@ -452,13 +448,12 @@ void UsbSetup(void)
 }
 
 //
-/*
 void UsbHandler(void)
 {
     u8 usb_token;
 
     usb_token = IRQFG;
-	if(USBRSTIF){USBRSTIF = 0;UsbBusReset();}
+    //	if(USBRSTIF){USBRSTIF = 0;UsbBusReset();}
     //	if(SETUPIF){SETUPIF = 0;UsbSetup();}
     
    	if(usb_token & IRQF_IN1)
@@ -475,11 +470,21 @@ void UsbHandler(void)
     }
     //	if(SUSPIF){SUSPIF = 0;UsbBusSuspend();}
 }
-*/
+
+void usbreset(void)
+{
+    u8 reg;
+    reg = MODE_FG;
+    MODE_FG = reg & (~MODE_USBRST);//! or have not need ?
+    NeedZeroPacket = 0;
+    Ep0SendLen = 0;
+    Ep1SendLen = 0;
+    Ep2SendLen = 0;
+}
  
 void usbinit(void)
 {
-    DFC = PULL_UP | USB_CON | USB_EN | VPCON | FW_K ;
+    DFC = PULL_UP | USB_CON | USB_EN | FW_K ;
     IE2 = IE_EIN0 | IE_EOUT0 | IE_ESIE ;
     IRQEN = IRQE_EIN1 | IRQE_EIN2 ;
     

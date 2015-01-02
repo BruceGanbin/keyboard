@@ -22,7 +22,7 @@ u8 code DeviceDescriptor[DEVICE_DESCRIPTOR_SIZE]=
     0x01 //bNumConfigurations
 };
 
-U8 code ConfigurationDescriptor[CONFIGURATION_DESCRIPTOR_SIZE]=
+u8 code ConfigurationDescriptor[CONFIGURATION_DESCRIPTOR_SIZE]=
 {
     0x09,//bLength
     0x02,//bDescriptorType
@@ -71,7 +71,8 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
 {
     /***************ÅäÖÃÃèÊö·û***********************/
     0x09,  //bLength×Ö¶Î
-    USB_CONFIGURATION_DESCRIPTOR_TYPE,  //bDescriptorType×Ö¶Î
+    //    USB_CONFIGURATION_DESCRIPTOR_TYPE,  //bDescriptorType×Ö¶Î
+    0x02,
     //wTotalLength×Ö¶Î
     JOYSTICK_SIZ_CONFIG_DESC,
     /* wTotalLength: Bytes returned */
@@ -158,7 +159,7 @@ u8 code Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
     0x0A  //bInterval×Ö¶Î
 };
 
-u8 code KeyboardReportDescriptor[KP_ReportDescriptor_Size]=
+u8 code KeyboardReportDescriptor[KBD_REPORTDESCRIPTOR_SIZE]=
 {
     0x05, 0x01,                    //   USAGE_PAGE (Generic Desktop) //63
     0x09, 0x06,                    //   USAGE (Keyboard)
@@ -196,7 +197,7 @@ u8 code KeyboardReportDescriptor[KP_ReportDescriptor_Size]=
   }; /* Joystick_ReportDescriptor */
 
 
-u8 code MouseReportDescriptor[Mouse_ReportDescriptor_Size]=
+u8 code MouseReportDescriptor[MOUSE_REPORTDESCRIPTS_SIZE]=
 {
     0x05, 0x01,                    //   USAGE_PAGE (Generic Desktop)
     0x09, 0x02,                    //   USAGE (Mouse)
@@ -228,22 +229,22 @@ u8 code MouseReportDescriptor[Mouse_ReportDescriptor_Size]=
     0xc0                           //   END_COLLECTION
 };
 
-u8 code LanguageId[1]   //[LANGUAGE_ID_SIZE]
+u8 code LanguageId[1]=   //[LANGUAGE_ID_SIZE]
 {
-
+0
 };
 
-u8 code ManufacturerStringDescriptor[1] //[MANUFACTUREER_SIZE]
+u8 code ManufacturerStringDescriptor[1]= //[MANUFACTUREER_SIZE]
 {
-
+0
 };
 
-u8 code ProductStringDescriptor[1] //[PRODUCT_SIZE]
+u8 code ProductStringDescriptor[1]= //[PRODUCT_SIZE]
 {
-
+0
 };
 
-u8 code SerialNumberStringDescriptor[1] //[SERIAL_NUM_SIZE]
+u8 code SerialNumberStringDescriptor[1]= //[SERIAL_NUM_SIZE]
 {
-
+0
 };
