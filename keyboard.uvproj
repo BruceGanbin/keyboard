@@ -370,6 +370,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\MAIN.c</FilePath>
             </File>
+            <File>
+              <FileName>usb_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\usb_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbcore.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\usbcore.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

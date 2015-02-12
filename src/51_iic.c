@@ -119,7 +119,7 @@ uchar read_byte(void)
     return dat;
 }
 
-void iic_init()
+void iic_init(void)
 {
     SCL=1;
     delay();

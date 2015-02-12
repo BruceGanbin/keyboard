@@ -6,19 +6,39 @@
 unsigned char usbkeydat[8];
 unsigned char temp=0;
 
+
+
 void system_init(void);
+void delay(u16 Count);
 
 void main(void)
 {
-    system_init();
-    usbinit();
+    //    system_init();
+    //    usbinit();
     while(1)
     {
-        readscan();
-        temp = usbkeydat[2];
-        if(temp)
-            usbkeydat[0] = 0xFF;
+//        readscan();
+//        temp = usbkeydat[2];
+//        if(temp)
+//            usbkeydat[0] = 0xFF;
+        LED1 = 1;
+        LED2 = 1;
+        LED3 = 1;
+        LED4 = 1;
+        delay(50);
+        LED1 = 0;
+        LED2 = 0;
+        LED3 = 0;
+        LED4 = 0;
+        delay(50);
     }
+}
+
+void delay(u16 Count)
+{
+    int i;
+    for(i=0;i<1000;i++)
+        while(Count--);
 }
 
 void IN0_interrupt(void) interrupt 10 // or 11
@@ -72,7 +92,7 @@ void set_idlemode(void)
 
 void system_init(void)
 {
-    u8 i,j;
+//    u8 i,j;
 
     power_init();
     usbreset();
